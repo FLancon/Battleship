@@ -11,7 +11,6 @@
     <title>Battleship</title>
 </head>
 <body>
-    <div id="test">fgdshfsdjkhfksdhfjksdhfsdkfhs</div>
-fbsd;fb,ghrjkghzrjkhkzhjkrhkgkz
+<h1>Bonjour Bonjour</h1>
 </body>
 </html>
