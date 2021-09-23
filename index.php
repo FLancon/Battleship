@@ -11,6 +11,6 @@
     <title>Battleship</title>
 </head>
 <body>
-<h1>Bonjour Bonjour</h1>
+<h1 style= "text-align:center">Embarquez Moussaillons!</h1>
 </body>
 </html>
