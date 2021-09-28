@@ -1,0 +1,90 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+height: 100vh;
+width: auto;
+background-image: url("./assets/img/battleship-background.jpg");
+background-size: cover;
+background-position: center;
+}
+
+.container {
+    display:flex;
+    height: 100%;
+    justify-content: space-between;
+}
+
+
+.boat-1 {
+    display: inline-grid;
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+.boat-2 {
+    display: inline-grid;
+    margin-top: 3%;
+    margin-right: 3%;
+}
+.boat h2 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.circle {
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    width: 250px;
+    height: 250px;
+    border-radius: 125px;
+    border: 20px solid #5cddc7;
+}
+
+#circle-1a {
+    background-image: url('./assets/img/avatar-tank.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#circle-1b {
+    background-image: url('./assets/img/avatar-heal.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#circle-1c {
+    background-image: url('./assets/img/avatar-dps.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#circle-2a {
+    background-image: url('./assets/img/avatar-tank.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#circle-2b {
+    background-image: url('./assets/img/avatar-heal.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#circle-2c {
+    background-image: url('./assets/img/avatar-dps.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.dropdown {
+    position: absolute;
+    top:15%;
+    width: -webkit-fill-available;
+    text-align: center;
+    font-size: 2rem;
+}
