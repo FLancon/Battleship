@@ -28,17 +28,14 @@ class Capitaine {
 
 
     public function createBoat(Boat $boat) {
-        // var_dump($boat);
+        var_dump($boat);
 
         $sql = $this->conn->prepare('INSERT INTO `BOAT`(`Name`, `xp`) VALUES ("'.$boat->getName().'", "'.$boat->getXp().'")');
         $sql->execute();
+        }
 
-
+        
     }
-
-}
-
-
 
 
 

@@ -34,9 +34,9 @@
         .$jeanedouard->getClass().'<br><br>';
 -->
 <?php
-    // $queen = new Boat("Queen", 0);
-    // $capitaine = new capitaine($conn);
-    // $capitaine->createBoat($queen);
+    $queen = new Boat("Queen", 0);
+    $capitaine = new capitaine($conn);
+    $capitaine->createBoat($queen);
 ?>
 
 
@@ -46,7 +46,7 @@ $data_boat = $conn->query('SELECT * FROM BOAT');
 $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
 
         // echo '<pre>';
-        // print_r($exec_data_boat);
+        // print_r($exec_data_boat[$i]['NAME']);
         // echo '</pre>';
 ?>
 
@@ -55,14 +55,14 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
     
     <div id="select_boat1">
 
-        <h2>Joueur 1</h2>
+        <h2> <?php echo 'TEST'  ?></h2>
 
         <div class="dropdown1">
-        <button onclick="myFunction1()" class="dropbtn1">Dropdown</button>
+        <button onclick="myFunction1()" class="dropbtn1">Boat List</button>
             <div id="myDropdown1" class="dropdown-content1">
                 <?php
                     for($i=0; $i < $countboat; $i++){ ?>
-                    <a href="#"><?php echo $exec_data_boat[$i]['NAME'] ?></a>
+                    <a href="#<?php echo $exec_data_boat[$i]['NAME'] ?>"><?php echo $exec_data_boat[$i]['NAME'] ?></a>
                     <?php  } ?>
             </div>
             <form action="" method="POST">
@@ -77,11 +77,11 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
          <h2>Joueur 2</h2>
 
         <div class="dropdown2">
-        <button onclick="myFunction2()" class="dropbtn2">Dropdown</button>
+        <button onclick="myFunction2()" class="dropbtn2">Boat List</button>
             <div id="myDropdown2" class="dropdown-content2">
                 <?php
                     for($i=0; $i < $countboat; $i++){ ?>
-                    <a href="#"><?php echo $exec_data_boat[$i]['NAME'] ?></a>
+                    <a href="#<?php echo $exec_data_boat[$i]['NAME'] ?>"><?php echo $exec_data_boat[$i]['NAME'] ?></a>
                     <?php  } ?>
             </div>
             <form action="" method="POST">
@@ -107,13 +107,15 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 
-
 <div class="container">
 
 
     <div class="boat-1">
+
+        <h2> <?php echo $_POST['NAME'] ?> </h2>
+
         <div class="gunner 1a">
-            <h2 class="gunner-name"> Jean-Michel</h2>
+            <h2 class="gunner-name">Jean-Michel</h2>
             <div class="circle" id="circle-1a"></div>
         </div>
         <div class="gunner 1b">
@@ -136,23 +138,23 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="boat-2">
         <div class="gunner 2a">
-            <h2 class="gunner-name"></h2>
+            <h2 class="gunner-name">Pierre-Paul</h2>
                 <div class="circle" id="circle-2a"></div>
         </div>
         <div class="gunner 2b">
-            <h2 class="gunner-name"></h2>
+            <h2 class="gunner-name">Pierre-alexis</h2>
                 <div class="circle" id="circle-2b"></div>
         </div>
         <div class="gunner 2c">
-            <h2 class="gunner-name"></h2>
+            <h2 class="gunner-name">Pierre-yves</h2>
                 <div class="circle" id="circle-2c"></div>
         </div>
         <div class="gunner 2d">
-            <h2 class="gunner-name"></h2>
+            <h2 class="gunner-name">Pierrot</h2>
                 <div class="circle" id="circle-2d"></div>
         </div>
         <div class="gunner 2e">
-            <h2 class="gunner-name"></h2>
+            <h2 class="gunner-name">Pierre</h2>
                 <div class="circle" id="circle-2e"></div>
         </div>
     </div>

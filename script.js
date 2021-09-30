@@ -1,4 +1,4 @@
-/* When the user clicks on the button,
+/* When the user clicks on the button 1,
 toggle between hiding and showing the dropdown content */
 function myFunction1() {
     document.getElementById("myDropdown1").classList.toggle("show");
@@ -21,7 +21,7 @@ window.onclick = function(event) {
 
 
 
-/* When the user clicks on the button,
+/* When the user clicks on the button 2,
 toggle between hiding and showing the dropdown content */
 function myFunction2() {
   document.getElementById("myDropdown2").classList.toggle("show");
