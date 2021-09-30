@@ -36,5 +36,11 @@ class Boat {
 }
 
 
+//Count number element database
+$boatcount = $conn->query('SELECT COUNT(*) FROM BOAT');
+$resultboat = $boatcount->fetch();
+$countboat = $resultboat[0];
+
+
 
 ?>

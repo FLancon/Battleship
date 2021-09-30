@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="script.js" defer></script>
     <title>Battleship</title>
 </head>
 <body>
@@ -31,26 +32,94 @@
         .$jeanluc->getClass().'<br><br>';
     echo $jeanedouard->getName().'<br>'
         .$jeanedouard->getClass().'<br><br>';
+-->
+<?php
+    // $queen = new Boat("Queen", 0);
+    // $capitaine = new capitaine($conn);
+    // $capitaine->createBoat($queen);
+?>
 
 
-    $rafiot = new Boat("Rafiot", 0);
-    $capitaine = new capitaine($conn);
-    $capitaine->createBoat($rafiot); -->
+<?php
+// Créer un tableau des infos de la table boat de la BDD:
+$data_boat = $conn->query('SELECT * FROM BOAT');
+$exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
+
+        // echo '<pre>';
+        // print_r($exec_data_boat);
+        // echo '</pre>';
+?>
 
 
-    <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown button
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
+<div id="select_container">
+    
+    <div id="select_boat1">
+
+        <h2>Joueur 1</h2>
+
+        <div class="dropdown1">
+        <button onclick="myFunction1()" class="dropbtn1">Dropdown</button>
+            <div id="myDropdown1" class="dropdown-content1">
+                <?php
+                    for($i=0; $i < $countboat; $i++){ ?>
+                    <a href="#"><?php echo $exec_data_boat[$i]['NAME'] ?></a>
+                    <?php  } ?>
+            </div>
+            <form action="" method="POST">
+                <input type="txt" name="NAME" placeholder="New Boat">
+                <input type="submit" name="submit_creation" value="Créer">
+            </form>
+        </div>
     </div>
+
+    <?php 
+        if(isset($_POST['submit_creation'])){
+            $req=$conn->prepare('INSERT INTO BOAT (NAME) VALUES (:NAME)');
+            $req->execute(array(
+                'NAME'=>$_POST['NAME'],
+
+            ));
+            header("Location: index.php");
+        }
+    ?>
+
+
+    <div id="select_boat2">
+
+         <h2>Joueur 2</h2>
+
+        <div class="dropdown2">
+        <button onclick="myFunction2()" class="dropbtn2">Dropdown</button>
+            <div id="myDropdown2" class="dropdown-content2">
+                <?php
+                    for($i=0; $i < $countboat; $i++){ ?>
+                    <a href="#"><?php echo $exec_data_boat[$i]['NAME'] ?></a>
+                    <?php  } ?>
+            </div>
+            <form action="" method="POST">
+                <input type="txt" name="NAME" placeholder="New Boat">
+                <input type="submit" name="submit_creation" value="Créer">
+            </form>
+        </div>
+    </div>
+
+    <?php 
+        if(isset($_POST['submit_creation'])){
+            $req=$conn->prepare('INSERT INTO BOAT (NAME) VALUES (:NAME)');
+            $req->execute(array(
+                'NAME'=>$_POST['NAME'],
+
+            ));
+            header("Location: index.php");
+        }
+    ?>
+
+</div>
+
 
 
 <div class="container">
+
 
     <div class="boat-1">
         <div class="gunner 1a">
