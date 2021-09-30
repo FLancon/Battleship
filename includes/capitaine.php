@@ -1,20 +1,29 @@
 <?php
 
+include './includes/dbconnect.local.php';
+
 class Capitaine {
     //attributs
     private $conn;
 
+    
+
     //constructor
     public function __construct(PDO $bdd) {
         $this->setConn($bdd);
+
+
     }
 
     public function getConn() {
         return $this->conn;
+
+        
     }
 
     public function setConn(PDO $conn) {
         $this->conn = $conn;
+
     }
 
 
@@ -26,6 +35,7 @@ class Capitaine {
 
 
     }
+
 }
 
 

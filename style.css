@@ -21,70 +21,173 @@ background-position: center;
 
 .boat-1 {
     display: inline-grid;
+    text-align: center;
     margin-top: 3%;
     margin-left: 3%;
+    border: 2px solid blue;
 }
 
 .boat-2 {
     display: inline-grid;
+    text-align: center;
     margin-top: 3%;
     margin-right: 3%;
 }
 .boat h2 {
-    font-size: 3rem;
-    text-align: center;
+    font-size: 2rem;
 }
 
 .circle {
     margin-left: auto;
     margin-right: auto;
     box-sizing: border-box;
-    width: 250px;
-    height: 250px;
-    border-radius: 125px;
-    border: 20px solid #5cddc7;
+    width: 12vh;
+    height: 12vh;
+    border-radius: 50%;
+    border: 10px solid #5cddc7;
 }
 
 #circle-1a {
     background-image: url('./assets/img/avatar-tank.png');
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 #circle-1b {
     background-image: url('./assets/img/avatar-heal.png');
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 #circle-1c {
     background-image: url('./assets/img/avatar-dps.png');
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 #circle-2a {
     background-image: url('./assets/img/avatar-tank.png');
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 #circle-2b {
     background-image: url('./assets/img/avatar-heal.png');
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 #circle-2c {
     background-image: url('./assets/img/avatar-dps.png');
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.dropdown {
+/* Dropdown1 Button */
+.dropbtn1 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown1 button on hover & focus */
+.dropbtn1:hover, .dropbtn1:focus {
+    background-color: #3e8e41;
+}
+
+/* The container <div> - needed to position the dropdown1 content */
+.dropdown1 {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown1 Content (Hidden by Default) */
+.dropdown-content1 {
+    display: none;
     position: absolute;
-    top:15%;
-    width: -webkit-fill-available;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown1 */
+.dropdown-content1 a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown1 links on hover */
+.dropdown-content1 a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown1 menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+/* Dropdown2 Button */
+.dropbtn2 {
+    background-color: #2b53aa;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown2 button on hover & focus */
+.dropbtn2:hover, .dropbtn2:focus {
+    background-color: #2b53aa;
+}
+
+/* The container <div> - needed to position the dropdown2 content */
+.dropdown2 {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown2 Content (Hidden by Default) */
+.dropdown-content2 {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown2 */
+.dropdown-content2 a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown2 links on hover */
+.dropdown-content2 a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown2 menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+#select_container {
+    position: absolute;
+    display: flex;
     text-align: center;
-    font-size: 2rem;
+    margin-top: 3%;
+
+}
+
+#select_boat1 {
+    margin-left: 150%;
+    margin-right: 50%;
 }
