@@ -72,18 +72,6 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
-    <?php 
-        if(isset($_POST['submit_creation'])){
-            $req=$conn->prepare('INSERT INTO BOAT (NAME) VALUES (:NAME)');
-            $req->execute(array(
-                'NAME'=>$_POST['NAME'],
-
-            ));
-            header("Location: index.php");
-        }
-    ?>
-
-
     <div id="select_boat2">
 
          <h2>Joueur 2</h2>
@@ -103,6 +91,8 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
+
+<!-- Création nouveau bateau BDD via input  -->
     <?php 
         if(isset($_POST['submit_creation'])){
             $req=$conn->prepare('INSERT INTO BOAT (NAME) VALUES (:NAME)');
