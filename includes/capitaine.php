@@ -33,7 +33,7 @@ class Capitaine {
 
         $sql = $this->conn->prepare('INSERT INTO `BOAT`(`Name`, `xp`) VALUES ("'.$boat->getName().'", "'.$boat->getXp().'")');
         $sql->execute();
-        }
+        
 
         
     }
