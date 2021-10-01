@@ -1,6 +1,6 @@
 <?php
 
-include './includes/dbconnect.local.php';
+// include './includes/dbconnect.local.php';
 
 class Capitaine {
     //attributs
@@ -27,6 +27,7 @@ class Capitaine {
     }
 
 
+
     public function createBoat(Boat $boat) {
         var_dump($boat);
 
@@ -36,8 +37,18 @@ class Capitaine {
 
         
     }
+    
 
 
+    public function createGunner(Gunner $gunner) {
+        $bite = $this->conn->query('SELECT * FROM GUNNER');
+        $stat = json_encode($bite);
+
+    }
+
+
+
+}
 
 
 ?>

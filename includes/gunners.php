@@ -1,6 +1,6 @@
 <?php
 
-class Gunners {
+class Gunner {
     
 
     //Attributs
