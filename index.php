@@ -33,6 +33,8 @@
     echo $jeanedouard->getName().'<br>'
         .$jeanedouard->getClass().'<br><br>';
 -->
+
+
 <?php
     $queen = new Boat("Queen", 0);
     $capitaine = new capitaine($conn);
@@ -55,7 +57,7 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
     
     <div id="select_boat1">
 
-        <h2> <?php echo 'TEST'  ?></h2>
+        <h2> Joueur 1</h2>
 
         <div class="dropdown1">
         <button onclick="myFunction1()" class="dropbtn1">Boat List</button>
