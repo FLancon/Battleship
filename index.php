@@ -3,7 +3,24 @@
     include './includes/gunners.php';
     include './includes/boat.php';
     include './includes/capitaine.php';
+
+    $capitaine = new Capitaine($conn);
+    // <!-- Création nouveau bateau BDD via input  -->
+
+    // if(isset($_POST['submit_creation'])){
+    //     $newboat = new Boat($_POST['NAME'], 0);
+    //     $capitaine->createBoat($newboat);
+    //     header("Location: index.php");
+    // }
+
+    if(isset($_POST['submit_creation'])){
+        $newgunner = new Gunner($name, $class);
+        $capitaine->createGunner($newgunner);
+        header("Location: index.php");
+    }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +30,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script src="script.js" defer></script>
     <title>Battleship</title>
 </head>
@@ -33,11 +50,6 @@
     echo $jeanedouard->getName().'<br>'
         .$jeanedouard->getClass().'<br><br>';
 -->
-<?php
-    // $queen = new Boat("Queen", 0);
-    // $capitaine = new capitaine($conn);
-    // $capitaine->createBoat($queen);
-?>
 
 
 <?php
@@ -85,35 +97,21 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
                     <?php  } ?>
             </div>
             <form action="" method="POST">
-                <input type="txt" name="NAME" placeholder="New Boat">
+                <input type="text" name="NAME" placeholder="New Boat">
                 <input type="submit" name="submit_creation" value="Créer">
             </form>
         </div>
     </div>
-
-
-<!-- Création nouveau bateau BDD via input  -->
-    <?php 
-        if(isset($_POST['submit_creation'])){
-            $req=$conn->prepare('INSERT INTO BOAT (NAME) VALUES (:NAME)');
-            $req->execute(array(
-                'NAME'=>$_POST['NAME'],
-
-            ));
-            header("Location: index.php");
-        }
-    ?>
-
 </div>
 
 
 
 <div class="container">
 
-
     <div class="boat-1">
+
         <div class="gunner 1a">
-            <h2 class="gunner-name"> Jean-Michel</h2>
+            <h2 class="gunner-name">Jean-Michel</h2>
             <div class="circle" id="circle-1a"></div>
         </div>
         <div class="gunner 1b">
@@ -125,16 +123,17 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
                 <div class="circle" id="circle-1c"></div>
         </div>
         <div class="gunner 1d">
-            <h2 class="gunner-name"> Jean Edouard</h2>
+            <h2 class="gunner-name">Jean Edouard</h2>
                 <div class="circle" id="circle-1d"></div>
         </div>
         <div class="gunner 1e">
-            <h2 class="gunner-name">Jante</h2>
+            <h2 class="gunner-name">Jean Neymar</h2>
                 <div class="circle" id="circle-1e"></div>
         </div>
     </div>
 
     <div class="boat-2">
+
         <div class="gunner 2a">
             <h2 class="gunner-name"></h2>
                 <div class="circle" id="circle-2a"></div>
