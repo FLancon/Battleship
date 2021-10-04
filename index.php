@@ -13,11 +13,18 @@
     //     header("Location: index.php");
     // }
 
+    // TEST Creation d'un DPS
     if(isset($_POST['submit_creation'])){
-        $newgunner = new Gunner($name, $class);
-        $capitaine->createGunner($newgunner);
+        $newdps = new Gunner(Gunner::CLASS_DPS, 108, 76, 13);
+        $capitaine->createDps($newdps);
         header("Location: index.php");
     }
+
+    // if(isset($_POST['submit_creation'])){
+    //     $newgunner = new Gunner($name, $class);
+    //     $capitaine->createGunner($newgunner);
+    //     header("Location: index.php");
+    // }
 ?>
 
 
@@ -60,6 +67,8 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
         // echo '<pre>';
         // print_r($exec_data_boat[$i]['NAME']);
         // echo '</pre>';
+
+    
 ?>
 
 
@@ -109,7 +118,7 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="boat-1">
 
-        <h2> <?php echo $_POST['NAME'] ?> </h2>
+        <!-- <h2> TEST </h2> -->
 
         <div class="gunner 1a">
             <h2 class="gunner-name">Jean-Michel</h2>

@@ -1,11 +1,14 @@
 <?php
 
 class Gunner {
-    
+
 
     //Attributs
-    private $name;
+    // private $name;
     private $class;
+    private $pv;
+    private $dps;
+    private $heal;
 
     const CLASS_DPS = 'Dps';
     const CLASS_HEAL = 'Heal';
@@ -15,43 +18,49 @@ class Gunner {
 
 
     //Constructor
-    public function __construct($name, $class) {
-        $this->setName($name);
+    public function __construct($class, $pv, $dps, $heal) {
         $this->setClass($class);
+        $this->setPv($pv);
+        $this->setDps($dps);
+        $this->setHeal($heal);
+
     }
 
 
 
     //Getters
-    public function getName() {
-        return $this->name;
-    }
     public function getClass() {
         return $this->class;
+    }
+    public function getPv() {
+        return $this->pv;
+    }
+    public function getDps() {
+        return $this->dps;
+    }
+    public function getHeal() {
+        return $this->heal;
     }
 
 
     
     //Setters
-    public function setName($value) {
-        $this->name = htmlspecialchars($value);
-    }
+
     public function setClass($value) {
+        $this->class = htmlspecialchars($value);
+    }
+    public function setPv($value) {
+        $this->class = htmlspecialchars($value);
+    }
+    public function setDps($value) {
+        $this->class = htmlspecialchars($value);
+    }
+    public function setHeal($value) {
         $this->class = htmlspecialchars($value);
     }
 
 
+
 }
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
