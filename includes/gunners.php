@@ -9,6 +9,7 @@ class Gunner {
     private $pv;
     private $dps;
     private $heal;
+    private $img;
 
     const CLASS_DPS = 'Dps';
     const CLASS_HEAL = 'Heal';
@@ -17,12 +18,21 @@ class Gunner {
 
 
 
+    // $class = Gunner::CLASS_DPS;
+    // $pv = $exec_sql [1] [2];
+    // $dps = $exec_sql [1] [3];
+    // $heal = $exec_sql [1] [4];
+    // $img = $exec_sql [1] [5];
+
+
+    
     //Constructor
-    public function __construct($class, $pv, $dps, $heal) {
+    public function __construct($class, $pv, $dps, $heal, $img) {
         $this->setClass($class);
         $this->setPv($pv);
         $this->setDps($dps);
         $this->setHeal($heal);
+        $this ->setImg($img);
 
     }
 
@@ -41,6 +51,9 @@ class Gunner {
     public function getHeal() {
         return $this->heal;
     }
+    public function getImg() {
+        return $this->img;
+    }
 
 
     
@@ -50,13 +63,16 @@ class Gunner {
         $this->class = htmlspecialchars($value);
     }
     public function setPv($value) {
-        $this->class = htmlspecialchars($value);
+        $this->pv = htmlspecialchars($value);
     }
     public function setDps($value) {
-        $this->class = htmlspecialchars($value);
+        $this->dps = htmlspecialchars($value);
     }
     public function setHeal($value) {
-        $this->class = htmlspecialchars($value);
+        $this->heal = htmlspecialchars($value);
+    }
+    public function setImg($value) {
+        $this->img = htmlspecialchars($value);
     }
 
 
