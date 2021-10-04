@@ -7,24 +7,100 @@
     $capitaine = new Capitaine($conn);
     // <!-- Création nouveau bateau BDD via input  -->
 
-    // if(isset($_POST['submit_creation'])){
-    //     $newboat = new Boat($_POST['NAME'], 0);
-    //     $capitaine->createBoat($newboat);
-    //     header("Location: index.php");
-    // }
-
-    // TEST Creation d'un DPS
     if(isset($_POST['submit_creation'])){
-        $newdps = new Gunner(Gunner::CLASS_DPS, 108, 76, 13);
-        $capitaine->createDps($newdps);
-        header("Location: index.php");
+        $newboat = new Boat($_POST['NAME'], 0);
+        $capitaine->createBoat($newboat);
+        // header("Location: index.php");
     }
 
-    // if(isset($_POST['submit_creation'])){
-    //     $newgunner = new Gunner($name, $class);
-    //     $capitaine->createGunner($newgunner);
-    //     header("Location: index.php");
-    // }
+    
+    // $newboat = new Boat($_POST['NAME'], 0);
+    // $capitaine->createBoat($newboat);
+    
+    
+    // Joueur 1
+
+    
+    // Creation DPS A1
+ 
+            $dpsCap = $capitaine->createDps();
+            $newdpsa1 = new Gunner(Gunner::CLASS_DPS, $dpsCap[0]["PV"], $dpsCap[0]["DPS"], $dpsCap[0]["HEAL"], $dpsCap[0]["IMG"]);
+            // echo '<pre>';
+            // print_r($newdps);
+            // echo '</pre>';
+
+
+    // Creation DPS2
+
+            $dpsCap = $capitaine->createDps();
+            $newdpsa2 = new Gunner(Gunner::CLASS_DPS, $dpsCap[0]["PV"], $dpsCap[0]["DPS"], $dpsCap[0]["HEAL"], $dpsCap[0]["IMG"]);
+
+            
+    // Creation Tank A1
+
+            $tankCap = $capitaine->createTank();
+            $newtanka1 = new Gunner(Gunner::CLASS_TANK, $tankCap[0]["PV"], $tankCap[0]["DPS"], $tankCap[0]["HEAL"], $tankCap[0]["IMG"]);
+
+            
+    // Creation Tank A2
+
+            $tankCap = $capitaine->createTank();
+            $newtanka2 = new Gunner(Gunner::CLASS_TANK, $tankCap[0]["PV"], $tankCap[0]["DPS"], $tankCap[0]["HEAL"], $tankCap[0]["IMG"]);
+
+
+    // Creation HEAL A1
+
+            $healCap = $capitaine->createHeal();
+            $newheala1 = new Gunner(Gunner::CLASS_HEAL, $healCap[0]["PV"], $healCap[0]["DPS"], $healCap[0]["HEAL"], $healCap[0]["IMG"]);
+
+            
+     
+            
+
+// Joueur 2
+    
+// Creation DPS B1
+ 
+        $dpsCap = $capitaine->createDps();
+        $newdpsb1 = new Gunner(Gunner::CLASS_DPS, $dpsCap[0]["PV"], $dpsCap[0]["DPS"], $dpsCap[0]["HEAL"], $dpsCap[0]["IMG"]);
+ 
+
+
+// Creation DPS B2
+
+        $dpsCap = $capitaine->createDps();
+        $newdpsb2 = new Gunner(Gunner::CLASS_DPS, $dpsCap[0]["PV"], $dpsCap[0]["DPS"], $dpsCap[0]["HEAL"], $dpsCap[0]["IMG"]);
+
+        
+// Creation Tank B1
+
+        $tankCap = $capitaine->createTank();
+        $newtankb1 = new Gunner(Gunner::CLASS_TANK, $tankCap[0]["PV"], $tankCap[0]["DPS"], $tankCap[0]["HEAL"], $tankCap[0]["IMG"]);
+
+        
+// Creation Tank B2
+
+        $tankCap = $capitaine->createTank();
+        $newtankb2 = new Gunner(Gunner::CLASS_TANK, $tankCap[0]["PV"], $tankCap[0]["DPS"], $tankCap[0]["HEAL"], $tankCap[0]["IMG"]);
+
+
+// Creation HEAL B1
+
+        $healCap = $capitaine->createHeal();
+        $newhealb1 = new Gunner(Gunner::CLASS_HEAL, $healCap[0]["PV"], $healCap[0]["DPS"], $healCap[0]["HEAL"], $healCap[0]["IMG"]);
+
+
+
+        
+
+
+    // TEST CREATION D'UN TABLEAU ISSU DE LA BDD 'GUNNER'
+        // $sql = $conn->query('SELECT * FROM GUNNER');
+        // $exec_sql = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        //     echo '<pre>';
+        //     print_r($exec_sql);
+        //     echo '</pre>';
 ?>
 
 
@@ -45,20 +121,6 @@
 
 
 
-<!-- 
-    $jeanmich = new Gunners('Jean-Michel', Gunners::CLASS_DPS );
-    $jeanluc = new Gunners('Jean-Luc', Gunners::CLASS_HEAL );
-    $jeanedouard = new Gunners('Jean-Edouard', Gunners::CLASS_TANK );
-
-    echo $jeanmich->getName().'<br>'
-        .$jeanmich->getClass().'<br><br>';
-    echo $jeanluc->getName().'<br>'
-        .$jeanluc->getClass().'<br><br>';
-    echo $jeanedouard->getName().'<br>'
-        .$jeanedouard->getClass().'<br><br>';
--->
-
-
 <?php
 // Créer un tableau des infos de la table boat de la BDD:
 $data_boat = $conn->query('SELECT * FROM BOAT');
@@ -76,7 +138,7 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
     
     <div id="select_boat1">
 
-        <h2> <?php echo 'TEST'  ?></h2>
+        <h2> <?php echo "test"?></h2>
 
         <div class="dropdown1">
         <button onclick="myFunction1()" class="dropbtn1">Boat List</button>
@@ -95,7 +157,7 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
 
     <div id="select_boat2">
 
-         <h2>Joueur 2</h2>
+         <h2><?php echo "test"?></h2>
 
         <div class="dropdown2">
         <button onclick="myFunction2()" class="dropbtn2">Boat List</button>
@@ -121,48 +183,51 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
         <!-- <h2> TEST </h2> -->
 
         <div class="gunner 1a">
-            <h2 class="gunner-name">Jean-Michel</h2>
-            <div class="circle" id="circle-1a"></div>
+            <h2 class="gunner-name"> <?php echo $newdpsa1->getClass()?></h2>
+            <div class="circle" id="circle-1a" style="background-image: url('<?php echo $newdpsa1->getImg()?>');" ></div>
+
+            <!-- background-image: url('./assets/img/avatar-tank.png') -->
+            
         </div>
         <div class="gunner 1b">
-            <h2 class="gunner-name">Jean Jean</h2>
-                <div class="circle" id="circle-1b"></div>
+            <h2 class="gunner-name"><?php echo $newdpsa2->getClass()?></h2>
+                <div class="circle" id="circle-1b" style="background-image: url('<?php echo $newdpsa2->getImg()?>');"></div>
         </div>
         <div class="gunner 1c">
-            <h2 class="gunner-name">Jean Mich</h2>
-                <div class="circle" id="circle-1c"></div>
+            <h2 class="gunner-name"><?php echo $newtanka1->getClass()?></h2>
+                <div class="circle" id="circle-1c" style="background-image: url('<?php echo $newtanka1->getImg()?>');"></div>
         </div>
         <div class="gunner 1d">
-            <h2 class="gunner-name">Jean Edouard</h2>
-                <div class="circle" id="circle-1d"></div>
+            <h2 class="gunner-name"><?php echo $newtanka2->getClass()?></h2>
+                <div class="circle" id="circle-1d" style="background-image: url('<?php echo $newtanka2->getImg()?>');"></div>
         </div>
         <div class="gunner 1e">
-            <h2 class="gunner-name">Jean Neymar</h2>
-                <div class="circle" id="circle-1e"></div>
+            <h2 class="gunner-name"><?php echo $newheala1->getClass()?></h2>
+                <div class="circle" id="circle-1e" style="background-image: url('<?php echo $newheala1->getImg()?>');"></div>
         </div>
     </div>
 
     <div class="boat-2">
 
         <div class="gunner 2a">
-            <h2 class="gunner-name">Pierre-Paul</h2>
-                <div class="circle" id="circle-2a"></div>
+            <h2 class="gunner-name"><?php echo $newhealb1->getClass()?></h2>
+                <div class="circle" id="circle-2a" style="background-image: url('<?php echo $newhealb1->getImg()?>');"></div>
         </div>
         <div class="gunner 2b">
-            <h2 class="gunner-name">Pierre-alexis</h2>
-                <div class="circle" id="circle-2b"></div>
+            <h2 class="gunner-name"><?php echo $newtankb2->getClass()?></h2>
+                <div class="circle" id="circle-2b" style="background-image: url('<?php echo $newtankb2->getImg()?>');"></div>
         </div>
         <div class="gunner 2c">
-            <h2 class="gunner-name">Pierre-yves</h2>
-                <div class="circle" id="circle-2c"></div>
+            <h2 class="gunner-name"><?php echo $newtankb1->getClass()?></h2>
+                <div class="circle" id="circle-2c" style="background-image: url('<?php echo $newtankb1->getImg()?>');"></div>
         </div>
         <div class="gunner 2d">
-            <h2 class="gunner-name">Pierrot</h2>
-                <div class="circle" id="circle-2d"></div>
+            <h2 class="gunner-name"><?php echo $newdpsb2->getClass()?></h2>
+                <div class="circle" id="circle-2d" style="background-image: url('<?php echo $newdpsb2->getImg()?>');"></div>
         </div>
         <div class="gunner 2e">
-            <h2 class="gunner-name">Pierre</h2>
-                <div class="circle" id="circle-2e"></div>
+            <h2 class="gunner-name"><?php echo $newdpsb1->getClass()?></h2>
+                <div class="circle" id="circle-2e" style="background-image: url('<?php echo $newdpsb1->getImg()?>');"></div>
         </div>
     </div>
 </div>

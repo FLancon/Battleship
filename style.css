@@ -45,49 +45,11 @@ background-position: center;
     height: 12vh;
     border-radius: 50%;
     border: 10px solid #5cddc7;
-}
-
-#circle-1a {
-    background-image: url('./assets/img/avatar-tank.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-#circle-1b {
-    background-image: url('./assets/img/avatar-heal.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-#circle-1c {
-    background-image: url('./assets/img/avatar-dps.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-#circle-2a {
-    background-image: url('./assets/img/avatar-tank.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-#circle-2b {
-    background-image: url('./assets/img/avatar-heal.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-#circle-2c {
-    background-image: url('./assets/img/avatar-dps.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
 
 /* Dropdown1 Button */
 .dropbtn1 {
