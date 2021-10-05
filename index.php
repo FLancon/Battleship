@@ -276,7 +276,7 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
     <input type="submit" id="btnattack" onclick="attack()" value="A l'abordage">
 </div>
 <script>
-
+console.log("Hello World !");
 $(document).ready(function(){
     alert("jQuery Works")
 });
