@@ -266,11 +266,14 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
             <h2 class="gunner-name"><?php echo $newdpsb2->getClass()?></h2>
                 <div class="circle" id="circle-2d" style="background-image: url('<?php echo $newdpsb2->getImg()?>');"></div>
         </div>
-        <div class="gunner 2e">
+        <div class="gunner 2e" id="gunnerb5">
             <h2 class="gunner-name"><?php echo $newdpsb1->getClass()?></h2>
                 <div class="circle" id="circle-2e" style="background-image: url('<?php echo $newdpsb1->getImg()?>');"></div>
         </div>
     </div>
+</div>
+<div class="button">
+    <input type="submit" id="btnattack" onclick="attack()" value="A l'abordage">
 </div>
 <script>
 
@@ -316,11 +319,21 @@ console.log(dpsa1.Gunnerdps)
 
 // Pattern d'attaque
 function attack() {
-    // dpsb1.Gunnerpv - dpsa1.Gunnerdps;
-    console.log(dpsb1.Gunnerpv - dpsa1.Gunnerdps);
+   dpsb1.Gunnerpv = (dpsb1.Gunnerpv - dpsa1.Gunnerdps);
+//    console.log(dpsb1.Gunnerpv);
+   if (dpsb1.Gunnerpv <= 20) {
+       document.getElementById("circle-2e").style.backgroundColor = 'red';
+   }
+   else if (dpsb1.Gunnerpv == 0) {
+       document.getElementById("gunnerb5").style.display = 'none';
+   }
+   console.log(`Le gunner dispose encore de ${dpsb1.Gunnerpv} PV`);
+
 };
 
-attack();
+// attack();
+console.log(`Le gunner dispose encore de ${dpsb1.Gunnerpv} PV`);
+
 
 // var test = php json_encode($arraydpsa1);?>')';
 // console.log(test);
