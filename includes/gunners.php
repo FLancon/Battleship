@@ -16,15 +16,6 @@ class Gunner {
     const CLASS_TANK = 'Tank';
 
 
-
-
-    // $class = Gunner::CLASS_DPS;
-    // $pv = $exec_sql [1] [2];
-    // $dps = $exec_sql [1] [3];
-    // $heal = $exec_sql [1] [4];
-    // $img = $exec_sql [1] [5];
-
-
     
     //Constructor
     public function __construct($class, $pv, $dps, $heal, $img) {
