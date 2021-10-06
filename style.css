@@ -50,6 +50,17 @@ background-position: center;
     background-position: center;
 }
 
+.info {
+    
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    width: 15vh;
+    height: 12vh;
+    border-radius: 50%;
+    border: 10px solid #5cddc7;
+}
+
 
 /* Dropdown1 Button */
 .dropbtn1 {
@@ -152,4 +163,9 @@ background-position: center;
 #select_boat1 {
     margin-left: 150%;
     margin-right: 50%;
+}
+
+
+.button {
+    text-align: center;
 }
