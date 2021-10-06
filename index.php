@@ -336,7 +336,9 @@ console.log(`Le gunner dispose encore de ${dpsb1.Gunnerpv} PV`);
 
 var arrayboat1 = [];
 arrayboat1.push(dpsa1.Gunnerdps, dpsa2.Gunnerdps, tanka1.Gunnerdps, tanka2.Gunnerdps, heala1.Gunnerdps);
+console.log(typeof arrayboat1);
 console.log(arrayboat1);
+
 
 // var test = php json_encode($arraydpsa1);?>')';
 // console.log(test);
