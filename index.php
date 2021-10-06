@@ -9,143 +9,39 @@
     $capitaine = new Capitaine($conn);
     // <!-- Création nouveau bateau BDD via input  -->
 
+
+    // Bouton de création de BOAT dans la BDD
     if(isset($_POST['submit_creation'])){
         $newboat = new Boat($_POST['NAME'], 0);
         $capitaine->createBoat($newboat);
         // header("Location: index.php");
 
     }
-
     
-    // $newboat = new Boat($_POST['NAME'], 0);
-    // $capitaine->createBoat($newboat);
-    
-    
-    // Joueur 1
-
-    
-    // Creation DPS A1
+    // Creation d'un objet DPS
  
             $dpsCap = $capitaine->createDps();
-            $newdpsa1 = new Gunner(Gunner::CLASS_DPS, $dpsCap[0]["PV"], $dpsCap[0]["DPS"], $dpsCap[0]["HEAL"], $dpsCap[0]["IMG"]);
-            // echo '<pre>';
-            // print_r($newdps);
-            // echo '</pre>';
+            $newdps = new Gunner(Gunner::CLASS_DPS, $dpsCap[0]["PV"], $dpsCap[0]["DPS"], $dpsCap[0]["HEAL"], $dpsCap[0]["IMG"]);
+            $arraydps = (array)$newdps;
 
-            // var_dump($newdpsa1);
-            $arraydpsa1 = (array)$newdpsa1;
-            // var_dump($arraydpsa1);
-            // echo str_replace('\\u0000', '', json_encode($arraydpsa1));
-
-
-            // class Gunner implements JsonSerializable {
-
-            //     public function jsonSerialize() {
-            //         return [
-            //             'PV' => $this->getPv(),
-            //             'DPS' => $this->getDps(),
-            //             'private_something' => $this->get_private_something()
-            //         ];
-            //     }
-            //     ...
-            // }
-
-
-
-
-
-            // echo json_encode(array(
-            //     "age" => 4,
-            //     "name" => "baby",
-            // ));
-
-
-            
-
-    // Creation DPS2
-
-            $dpsCap = $capitaine->createDps();
-            $newdpsa2 = new Gunner(Gunner::CLASS_DPS, $dpsCap[0]["PV"], $dpsCap[0]["DPS"], $dpsCap[0]["HEAL"], $dpsCap[0]["IMG"]);
-            $arraydpsa2 = (array)$newdpsa2;
-
-
-            
-    // Creation Tank A1
+    // Creation d'un objet Tank
 
             $tankCap = $capitaine->createTank();
-            $newtanka1 = new Gunner(Gunner::CLASS_TANK, $tankCap[0]["PV"], $tankCap[0]["DPS"], $tankCap[0]["HEAL"], $tankCap[0]["IMG"]);
-            $arraytanka1 = (array)$newtanka1;
+            $newtank = new Gunner(Gunner::CLASS_TANK, $tankCap[0]["PV"], $tankCap[0]["DPS"], $tankCap[0]["HEAL"], $tankCap[0]["IMG"]);
+            $arraytank = (array)$newtank;
 
-            
-    // Creation Tank A2
-
-            $tankCap = $capitaine->createTank();
-            $newtanka2 = new Gunner(Gunner::CLASS_TANK, $tankCap[0]["PV"], $tankCap[0]["DPS"], $tankCap[0]["HEAL"], $tankCap[0]["IMG"]);
-            $arraytanka2 = (array)$newtanka2;
-
-
-
-    // Creation HEAL A1
+   // Creation d'un objet HEAL 
 
             $healCap = $capitaine->createHeal();
-            $newheala1 = new Gunner(Gunner::CLASS_HEAL, $healCap[0]["PV"], $healCap[0]["DPS"], $healCap[0]["HEAL"], $healCap[0]["IMG"]);
-            $arrayheala1 = (array)$newheala1;
+            $newheal = new Gunner(Gunner::CLASS_HEAL, $healCap[0]["PV"], $healCap[0]["DPS"], $healCap[0]["HEAL"], $healCap[0]["IMG"]);
+            $arrayheal = (array)$newheal;
 
-
-            
-     
-            
-
-// Joueur 2
-    
-// Creation DPS B1
- 
-        $dpsCap = $capitaine->createDps();
-        $newdpsb1 = new Gunner(Gunner::CLASS_DPS, $dpsCap[0]["PV"], $dpsCap[0]["DPS"], $dpsCap[0]["HEAL"], $dpsCap[0]["IMG"]);
-        $arraydpsb1 = (array)$newdpsb1;
-
-
-// Creation DPS B2
-
-        $dpsCap = $capitaine->createDps();
-        $newdpsb2 = new Gunner(Gunner::CLASS_DPS, $dpsCap[0]["PV"], $dpsCap[0]["DPS"], $dpsCap[0]["HEAL"], $dpsCap[0]["IMG"]);
-        $arraydpsb2 = (array)$newdpsb2;
-        
-// Creation Tank B1
-
-        $tankCap = $capitaine->createTank();
-        $newtankb1 = new Gunner(Gunner::CLASS_TANK, $tankCap[0]["PV"], $tankCap[0]["DPS"], $tankCap[0]["HEAL"], $tankCap[0]["IMG"]);
-        $arraytankb1 = (array)$newtankb1;
-        
-// Creation Tank B2
-
-        $tankCap = $capitaine->createTank();
-        $newtankb2 = new Gunner(Gunner::CLASS_TANK, $tankCap[0]["PV"], $tankCap[0]["DPS"], $tankCap[0]["HEAL"], $tankCap[0]["IMG"]);
-        $arraytankb2 = (array)$newtankb2;
-
-// Creation HEAL B1
-
-        $healCap = $capitaine->createHeal();
-        $newhealb1 = new Gunner(Gunner::CLASS_HEAL, $healCap[0]["PV"], $healCap[0]["DPS"], $healCap[0]["HEAL"], $healCap[0]["IMG"]);
-        $arrayhealb1 = (array)$newhealb1;
-
-
-        
-
-
-    // TEST CREATION D'UN TABLEAU ISSU DE LA BDD 'GUNNER'
-        // $sql = $conn->query('SELECT * FROM GUNNER');
-        // $exec_sql = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-        //     echo '<pre>';
-        //     print_r($exec_sql);
-        //     echo '</pre>';
 ?>
 
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -166,11 +62,12 @@
 $data_boat = $conn->query('SELECT * FROM BOAT');
 $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
 
-        // echo '<pre>';
-        // print_r($exec_data_boat[$i]['NAME']);
-        // echo '</pre>';
 
-    
+// Créer un tableau des infos de la table Gunner de la BDD:
+$data_gunner = $conn->query('SELECT * FROM GUNNER');
+$exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
+
+
 ?>
 
 
@@ -220,143 +117,128 @@ $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="boat-1">
 
-        <!-- <h2> TEST </h2> -->
 
-        <div class="gunner 1a">
-            <h2 class="gunner-name"> <?php echo $newdpsa1->getClass()?></h2>
-            <div class="circle" id="circle-1a" style="background-image: url('<?php echo $newdpsa1->getImg()?>');" >
-                <!-- <div class="info"></div>    -->
-            </div>
-            
-            
-        </div>
-        <div class="gunner 1b">
-            <h2 class="gunner-name"><?php echo $newdpsa2->getClass()?></h2>
-                <div class="circle" id="circle-1b" style="background-image: url('<?php echo $newdpsa2->getImg()?>');"></div>
-        </div>
-        <div class="gunner 1c">
-            <h2 class="gunner-name"><?php echo $newtanka1->getClass()?></h2>
-                <div class="circle" id="circle-1c" style="background-image: url('<?php echo $newtanka1->getImg()?>');"></div>
-        </div>
-        <div class="gunner 1d">
-            <h2 class="gunner-name"><?php echo $newtanka2->getClass()?></h2>
-                <div class="circle" id="circle-1d" style="background-image: url('<?php echo $newtanka2->getImg()?>');"></div>
-        </div>
-        <div class="gunner 1e">
-            <h2 class="gunner-name"><?php echo $newheala1->getClass()?></h2>
-                <div class="circle" id="circle-1e" style="background-image: url('<?php echo $newheala1->getImg()?>');"></div>
-        </div>
+    <!-- A DEVELOPPER EN JS Pour boucler sur les tableaux d'objet JS "ArrayBoat1" & "ArrayBoat2" -->
+
+
+     <?php 
+        foreach($exec_data_gunner as $data_gunner) {?>
+            <h2 class="gunner-name"> <?php echo $data_gunner ['ROLE']?></h2>
+            <div class="circle" id="circle" style="background-image: url('<?php echo $data_gunner ['IMG']?>');" ></div>
+        <?php }
+        ?>
+
+        
     </div>
 
     <div class="boat-2">
 
-        <div class="gunner 2a">
-            <h2 class="gunner-name"><?php echo $newhealb1->getClass()?></h2>
-                <div class="circle" id="circle-2a" style="background-image: url('<?php echo $newhealb1->getImg()?>');"></div>
-        </div>
-        <div class="gunner 2b">
-            <h2 class="gunner-name"><?php echo $newtankb2->getClass()?></h2>
-                <div class="circle" id="circle-2b" style="background-image: url('<?php echo $newtankb2->getImg()?>');"></div>
-        </div>
-        <div class="gunner 2c">
-            <h2 class="gunner-name"><?php echo $newtankb1->getClass()?></h2>
-                <div class="circle" id="circle-2c" style="background-image: url('<?php echo $newtankb1->getImg()?>');"></div>
-        </div>
-        <div class="gunner 2d">
-            <h2 class="gunner-name"><?php echo $newdpsb2->getClass()?></h2>
-                <div class="circle" id="circle-2d" style="background-image: url('<?php echo $newdpsb2->getImg()?>');"></div>
-        </div>
-        <div class="gunner 2e" id="gunnerb5">
-            <h2 class="gunner-name"><?php echo $newdpsb1->getClass()?></h2>
-                <div class="circle" id="circle-2e" style="background-image: url('<?php echo $newdpsb1->getImg()?>');"></div>
-        </div>
+    <?php 
+    foreach($exec_data_gunner as $data_gunner) {?>
+        <h2 class="gunner-name"> <?php echo $data_gunner ['ROLE']?></h2>
+        <div class="circle" id="circle" style="background-image: url('<?php echo $data_gunner ['IMG']?>');" ></div>
+    <?php }
+    ?>  
+
+        
     </div>
+    
 </div>
+
+
+
 <div class="button">
-    <input type="submit" id="btnattack" onclick="attack()" value="A l'abordage">
+    <input type="submit" id="btnattack" onclick="attackA()" value="A l'abordage">
+    <input type="submit" id="btnattack" onclick="attackB()" value="B l'abordage">
 </div>
 <script>
-console.log("Hello World !");
-$(document).ready(function(){
-    alert("jQuery Works")
-});
-//Recup array boat 1 et trtansformation en obj JS
 
-var dpsa1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydpsa1)) ?>');
-console.log(dpsa1);
 
-var dpsa2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydpsa2)) ?>');
-console.log(dpsa2);
 
-var tanka1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytanka1)) ?>');
-console.log(tanka1);
+//Recup array boat 1 et transformation en obj JS
+var dpsa1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
 
-var tanka2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytanka2)) ?>');
-console.log(tanka2);
+var dpsa2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
 
-var heala1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arrayheala1)) ?>');
-console.log(heala1);
+var tanka1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytank)) ?>');
+
+var tanka2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytank)) ?>');
+
+var heala1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arrayheal)) ?>');
+
 
 //Recup array boat 2 et transformation en obj JS
+var dpsb1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
 
-var dpsb1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydpsb1)) ?>');
-console.log(dpsb1);
+var dpsb2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
 
-var dpsb2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydpsb2)) ?>');
-console.log(dpsb2);
+var tankb1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytank)) ?>');
 
-var tankb1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytankb1)) ?>');
-console.log(tankb1);
+var tankb2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytank)) ?>');
 
-var tankb2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytankb2)) ?>');
-console.log(tankb2);
+var healb1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arrayheal)) ?>');
 
-var healb1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arrayhealb1)) ?>');
-console.log(healb1);
 
-console.log(typeof dpsa1);
-console.log(dpsa1.Gunnerdps)
 
-// Pattern d'attaque
-function attack() {
-   dpsb1.Gunnerpv = (dpsb1.Gunnerpv - dpsa1.Gunnerdps);
-//    console.log(dpsb1.Gunnerpv);
-   if (dpsb1.Gunnerpv <= 20) {
-       document.getElementById("circle-2e").style.backgroundColor = 'red';
-   }
-   else if (dpsb1.Gunnerpv == 0) {
-       document.getElementById("gunnerb5").style.display = 'none';
-   }
-   console.log(`Le gunner dispose encore de ${dpsb1.Gunnerpv} PV`);
 
-};
 
-// attack();
-console.log(`Le gunner dispose encore de ${dpsb1.Gunnerpv} PV`);
+// recup HTML et lié avec obj JS
+// const gunner1 = document.querySelector("#circle-1b");
+// gunner1.setAttribute("data-obj", dpsa2);
+// gunner1.addEventListener("click", (e) => {
+// const objJS = $("#circle-1b").prop("data-obj");
+//     console.log(objJS.Gunnerdps);
+// })
 
+// //Créer var au click
+// var a;
+// function processClick() {
+//     a= this.id;  // ID de l'element cliqué
+//     console.log(a);
+// }
+
+
+
+
+// Array Composé des Valeurs du BOAT 1
 var arrayboat1 = [];
-arrayboat1.push(dpsa1.Gunnerdps, dpsa2.Gunnerdps, tanka1.Gunnerdps, tanka2.Gunnerdps, heala1.Gunnerdps);
-console.log(typeof arrayboat1);
+arrayboat1.push(dpsa1, dpsa2, tanka1, tanka2, heala1);
 console.log(arrayboat1);
 
+// Array Composé des Valeurs du BOAT 2
+var arrayboat2 = [];
+arrayboat2.push(dpsb1, dpsb2, tankb1, tankb2, healb1);
+console.log(arrayboat2);
 
-// var test = php json_encode($arraydpsa1);?>')';
-// console.log(test);
- 
-// alert (JSON.stringify(test));
 
-// $(document).ready(function(){
-// $.ajax({
-//     type : 'POST',
-//     url : 'index.php',
-//     dataType : 'json',
-//     success : function(data){
- 
-//                var json_data = JSON.parse(data);
-//                 console.log(json_data);
-//     }
-// });
-// });
+
+
+// TEST Pattern d'attaque
+function attackA() {
+    for (let i in arrayboat2) {
+        arrayboat2[i].Gunnerpv = (arrayboat2[i].Gunnerpv - arrayboat1[i].Gunnerdps);
+
+        if (arrayboat2[i].Gunnerpv <= 1) {
+            arrayboat2.splice([i],1);
+        }
+    }
+    console.log(arrayboat2);
+
+}
+
+
+// TEST Pattern d'attaque
+function attackB() {
+    for (let i in arrayboat1) {
+        arrayboat1[i].Gunnerpv = (arrayboat1[i].Gunnerpv - arrayboat2[i].Gunnerdps);
+
+        if (arrayboat1[i].Gunnerpv <= 1) {
+            arraypvboat1.splice([i],1);
+        }
+        console.log(arrayboat1);
+    }
+}
+
 
     // fetch("index.php")
     // .then((arraydpsa1) => arraydpsa1.json())
