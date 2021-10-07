@@ -113,70 +113,113 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 
-<div class="container">
+<div class="container" id="container">
 
-    <div class="boat-1">
+    <div class="boat-1" id="boat1">
+
+    <script>
+
+        //Recup array boat 1 et transformation en obj JS
+        var dpsa1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
+        var dpsa2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
+        var dpsa3=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
+        var tanka1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytank)) ?>');
+        var tanka2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytank)) ?>');
+        var heala1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arrayheal)) ?>');
+        var heala2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arrayheal)) ?>');
+
+        //Recup array boat 2 et transformation en obj JS
+        var dpsb1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
+        var dpsb2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
+        var dpsb3=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
+        var tankb1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytank)) ?>');
+        var tankb2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytank)) ?>');
+        var healb1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arrayheal)) ?>');
+        var healb2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arrayheal)) ?>');
+
+        // Création Array BOAT 1 & 2
+        var arrayboat1 = [dpsa1, dpsa2, dpsa3, tanka1, heala1];
+        var arrayboat2 = [dpsb1, dpsb2, dpsb3, tankb1, healb1];
 
 
-    <!-- A DEVELOPPER EN JS Pour boucler sur les tableaux d'objet JS "ArrayBoat1" & "ArrayBoat2" -->
+        // Creation graphique des Avatars Gunners du BOAT 1
+        for (let i in arrayboat1) {
+
+            var newH2 = document.createElement("h2");
+            newH2.className = 'gunner-class 1' + i + '';
+            let name = document.createTextNode(arrayboat1[i].Gunnerclass)
+            newH2.appendChild(name);
 
 
-     <?php 
-        foreach($exec_data_gunner as $data_gunner) {?>
-            <h2 class="gunner-name"> <?php echo $data_gunner ['ROLE']?></h2>
-            <div class="circle" id="circle" style="background-image: url('<?php echo $data_gunner ['IMG']?>');" ></div>
-        <?php }
-        ?>
+            var newDiv = document.createElement("div");
+            newDiv.className = 'circle 1';
+            newDiv.id = 'circle 1'+i+'';
+            newDiv.style = 'background-image: url(' + arrayboat1[i].Gunnerimg + ');'
+
+            const boat1 = document.querySelector('#boat1');
+
+            boat1.appendChild(newH2);
+            boat1.appendChild(newDiv);
+        }
+
+        console.log(arrayboat1)
+
+    </script>
+        
+    </div>
+
+    <div class="boat-2" id="boat2">
+
+    <script>
+
+        // Creation graphique des Avatars Gunners du BOAT 2
+        for (let i in arrayboat2) {
+
+            var newH2 = document.createElement("h2");
+            newH2.className = 'gunner-class 2' + i + '';
+            let name = document.createTextNode(arrayboat2[i].Gunnerclass)
+            newH2.appendChild(name);
+
+
+            var newDiv = document.createElement("div");
+            newDiv.className = 'circle 2';
+            newDiv.id = 'circle 2'+i+'';
+            newDiv.style = 'background-image: url(' + arrayboat2[i].Gunnerimg + ');'
+
+            const boat1 = document.querySelector('#boat2');
+
+            boat2.appendChild(newH2);
+            boat2.appendChild(newDiv);
+        }
+
+        console.log(arrayboat2)
+
+
+    </script>
+
 
         
     </div>
 
-    <div class="boat-2">
-
-    <?php 
-    foreach($exec_data_gunner as $data_gunner) {?>
-        <h2 class="gunner-name"> <?php echo $data_gunner ['ROLE']?></h2>
-        <div class="circle" id="circle" style="background-image: url('<?php echo $data_gunner ['IMG']?>');" ></div>
-    <?php }
-    ?>  
-
-        
-    </div>
-    
 </div>
 
 
 
 <div class="button">
+    <input type="submit" id="btnteama1" onclick="pushBoat1a1()" value="3/1/1">
+    <input type="submit" id="btnteama2" onclick="pushBoat1a2()" value="2/1/2">
+    <input type="submit" id="btnteama3" onclick="pushBoat1a3()" value="2/2/1">
     <input type="submit" id="btnattack" onclick="attackA()" value="A l'abordage">
     <input type="submit" id="btnattack" onclick="attackB()" value="B l'abordage">
+    <input type="submit" id="btnteamb1" onclick="pushBoat2b1()" value="3/1/1">
+    <input type="submit" id="btnteamb2" onclick="pushBoat2b2()" value="2/1/2">
+    <input type="submit" id="btnteamb3" onclick="pushBoat2b3()" value="2/2/1">
 </div>
+
+
+
 <script>
 
-
-
-//Recup array boat 1 et transformation en obj JS
-var dpsa1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
-
-var dpsa2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
-
-var tanka1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytank)) ?>');
-
-var tanka2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytank)) ?>');
-
-var heala1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arrayheal)) ?>');
-
-
-//Recup array boat 2 et transformation en obj JS
-var dpsb1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
-
-var dpsb2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
-
-var tankb1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytank)) ?>');
-
-var tankb2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraytank)) ?>');
-
-var healb1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arrayheal)) ?>');
 
 
 
@@ -199,21 +242,126 @@ var healb1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($array
 
 
 
+// Function Push Pré-composition Team in ARRAYBOAT1
+function pushBoat1a1() {
 
-// Array Composé des Valeurs du BOAT 1
-var arrayboat1 = [];
-arrayboat1.push(dpsa1, dpsa2, tanka1, tanka2, heala1);
-console.log(arrayboat1);
+    arrayboat1.length = 0;
+    arrayboat1.push(dpsa1, dpsa2, dpsa3, tanka1, heala1);
 
-// Array Composé des Valeurs du BOAT 2
-var arrayboat2 = [];
-arrayboat2.push(dpsb1, dpsb2, tankb1, tankb2, healb1);
-console.log(arrayboat2);
+    for (let i in arrayboat1) {
+        let title = document.getElementsByClassName('gunner-class 1'+i+'')
+        let circle = document.getElementById('circle 1'+i+'');
+            for(let titre of title){
+                titre.textContent = ''+arrayboat1[i].Gunnerclass+'';
+            }
+        
+        circle.style= 'background-image: url('+arrayboat1[i].Gunnerimg+');';
+
+    }
+
+    console.log(arrayboat1);
+
+}
+
+ 
+
+function pushBoat1a2() {
+
+    arrayboat1.length = 0;
+    arrayboat1.push(dpsa1, dpsa2, tanka1, heala1, heala2);    
+
+    for (let i in arrayboat1) {
+        let title = document.getElementsByClassName('gunner-class 1'+i+'')
+        let circle = document.getElementById('circle 1'+i+'');
+            for(let titre of title){
+                titre.textContent = ''+arrayboat1[i].Gunnerclass+'';
+            }
+        circle.style= 'background-image: url('+arrayboat1[i].Gunnerimg+');';
+
+    }
+
+    console.log(arrayboat1);
+
+}
+
+function pushBoat1a3() {
+    arrayboat1.length = 0;
+    arrayboat1.push(dpsa1, dpsa2, tanka1, tanka2, heala1);
+
+    for (let i in arrayboat1) {
+        let title = document.getElementsByClassName('gunner-class 1'+i+'')
+        let circle = document.getElementById('circle 1'+i+'');
+
+            for(let titre of title){
+                titre.textContent = ''+arrayboat1[i].Gunnerclass+'';
+            }
+        
+        circle.style= 'background-image: url('+arrayboat1[i].Gunnerimg+');';
+
+    }
+
+    console.log(arrayboat1);
+}
+
+// Function Push Pré-composition Team in ARRAYBOAT2
+function pushBoat2b1() {
+    arrayboat2.length = 0;
+    arrayboat2.push(dpsb1, dpsb2, dpsb3, tankb1, healb1);
+
+    for (let i in arrayboat2) {
+        let title = document.getElementsByClassName('gunner-class 2'+i+'')
+        let circle = document.getElementById('circle 2'+i+'');
+
+            for(let titre of title){
+                titre.textContent = ''+arrayboat2[i].Gunnerclass+'';
+            }
+        
+        circle.style= 'background-image: url('+arrayboat2[i].Gunnerimg+');';
+
+    }
+
+    console.log(arrayboat2);
+}
+function pushBoat2b2() {
+    arrayboat2.length = 0;
+    arrayboat2.push(dpsb1, dpsb2, tankb1, healb1, healb2);
+
+    for (let i in arrayboat2) {
+        let title = document.getElementsByClassName('gunner-class 2'+i+'')
+        let circle = document.getElementById('circle 2'+i+'');
+
+            for(let titre of title){
+                titre.textContent = ''+arrayboat2[i].Gunnerclass+'';
+            }
+        
+        circle.style= 'background-image: url('+arrayboat2[i].Gunnerimg+');';
+
+    }
+
+    console.log(arrayboat2);
+}
+function pushBoat2b3() {
+    arrayboat2.length = 0;
+    arrayboat2.push(dpsb1, dpsb2, tankb1, tankb2, healb1);
+
+    for (let i in arrayboat2) {
+        let title = document.getElementsByClassName('gunner-class 2'+i+'')
+        let circle = document.getElementById('circle 2'+i+'');
+
+            for(let titre of title){
+                titre.textContent = ''+arrayboat2[i].Gunnerclass+'';
+            }
+        
+        circle.style= 'background-image: url('+arrayboat2[i].Gunnerimg+');';
+
+    }
+
+    console.log(arrayboat2);
+}
 
 
 
-
-// TEST Pattern d'attaque
+// Pattern Attack BOAT 1
 function attackA() {
     for (let i in arrayboat2) {
         arrayboat2[i].Gunnerpv = (arrayboat2[i].Gunnerpv - arrayboat1[i].Gunnerdps);
@@ -222,22 +370,27 @@ function attackA() {
             arrayboat2.splice([i],1);
         }
     }
+
+
+    
     console.log(arrayboat2);
 
 }
 
 
-// TEST Pattern d'attaque
+// Pattern Attack BOAT 2
 function attackB() {
     for (let i in arrayboat1) {
         arrayboat1[i].Gunnerpv = (arrayboat1[i].Gunnerpv - arrayboat2[i].Gunnerdps);
 
         if (arrayboat1[i].Gunnerpv <= 1) {
-            arraypvboat1.splice([i],1);
+            arrayboat1.splice([i],1);
         }
-        console.log(arrayboat1);
     }
+    console.log(arrayboat1);
 }
+
+
 
 
     // fetch("index.php")
