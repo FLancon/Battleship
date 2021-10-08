@@ -371,6 +371,19 @@ function attackA() {
         }
     }
 
+    // $(".circle 2").remove();
+
+    // document.getElementsByClassName('gunner-class 2').remove();
+    // document.getElementById('circle 2').remove();
+    // title.remove();
+    // circle.remove();
+    // var newH2 = document.getElementById("h2");
+    // boat2.removeChild(newH2);
+    // boat2.removeChild(newDiv);
+    
+
+    
+
 
     
     console.log(arrayboat2);
@@ -380,6 +393,8 @@ function attackA() {
 
 // Pattern Attack BOAT 2
 function attackB() {
+ 
+
     for (let i in arrayboat1) {
         arrayboat1[i].Gunnerpv = (arrayboat1[i].Gunnerpv - arrayboat2[i].Gunnerdps);
 
@@ -387,6 +402,8 @@ function attackB() {
             arrayboat1.splice([i],1);
         }
     }
+
+    // document.boat1.innerHTML = " ";
     console.log(arrayboat1);
 }
 
