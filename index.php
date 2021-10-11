@@ -138,8 +138,9 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
         var arrayboat1 = [dpsa1, dpsa2, dpsa3, tanka1, heala1];
         var arrayboat2 = [dpsb1, dpsb2, dpsb3, tankb1, healb1];
 
+    
 
-        // fonction Creation graphique Initiale des Avatars Gunners du BOAT
+        //TEST Creation graphique des Avatars Gunners + INFO GUNNER
         function create(arg1, arg2, arg3, arg4) {
             for (let i in arg1) {
 
@@ -148,31 +149,75 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
                 let name = document.createTextNode(arg1[i].Gunnerclass)
                 newH2.appendChild(name);
 
+                //div info-gunner
+                var newDiv1 = document.createElement("div");
+                newDiv1.className = "info-gunner";
 
-                var newDiv = document.createElement("div");
-                newDiv.className = arg3;
-                newDiv.id = arg3+i+'';
-                newDiv.style = 'background-image: url(' + arg1[i].Gunnerimg + ');'
+                //div circle
+                var newDiv2 = document.createElement("div");
+                newDiv2.className = arg3;
+                newDiv2.id = arg3+i+'';
+                newDiv2.style = 'background-image: url(' + arg1[i].Gunnerimg + ');'
 
-                const boat1 = document.querySelector('#arg4');
+                //DIV PV-GUNNER 
+                var newDiv3 = document.createElement("div");
+                newDiv3.className = "pv-gunner";
+                newDiv3.style = 'background-image: url("./assets/img/cardiogram.png");'
+
+                // SPAN PV
+                var newSpan1 = document.createElement("span");
+                let pv = document.createTextNode(arg1[i].Gunnerpv);
+                
+                //DIV DPS-GUNNER
+                var newDiv4 = document.createElement("div");
+                newDiv4.className = "dps-gunner";
+                newDiv4.style = 'background-image: url("./assets/img/swords.png");'
+
+                // SPAN DPS
+                var newSpan2 = document.createElement("span");
+                let dps = document.createTextNode(arg1[i].Gunnerdps);
+
+                //DIV SEPARATOR
+                var newDiv5 = document.createElement("div");
+                newDiv5.className = "separator";
+
+                 //DIV ATTACK
+                 var newDiv6 = document.createElement("div");
+                newDiv6.className = "attack";
+                newDiv6.style = 'background-image: url("./assets/img/slash.png");'
+
+                
+                // const boat1 = document.querySelector('#arg4');
 
                 arg4.appendChild(newH2);
-                arg4.appendChild(newDiv);
+                arg4.appendChild(newDiv1);
+                newDiv1.appendChild(newDiv2);
+                newDiv1.appendChild(newDiv3);
+                newDiv3.appendChild(newSpan1);
+                newSpan1.appendChild(pv);
+                newDiv1.appendChild(newDiv4);
+                newDiv4.appendChild(newSpan2);
+                newSpan2.appendChild(dps);
+                newDiv1.appendChild(newDiv5);
+                newDiv1.appendChild(newDiv6);
+                
             }
 
                 console.log(arg1)
 
         }
-
+        
         // appel fonction de creation graphique de Boat1
         create(arrayboat1, 'gunner-class 1', 'circle 1', boat1)
 
+
+        
     </script>
         
     </div>
 
     <div class="boat-2" id="boat2">
-
+    
     <script>
         // appel fonction de creation graphique de Boat2
         create(arrayboat2, 'gunner-class 2', 'circle 2', boat2)
@@ -187,26 +232,25 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 
 
 <div class="button">
-    <input type="submit" id="btnteama1" onclick="pushBoat(arrayboat1, 'gunner-class 1', 'circle 1', dpsa1, dpsa2, dpsa3, tanka1, heala1)" value="3/1/1">
-    <input type="submit" id="btnteama2" onclick="pushBoat(arrayboat1, 'gunner-class 1', 'circle 1', dpsa1, dpsa2, tanka1, heala1, heala2)" value="2/1/2">
-    <input type="submit" id="btnteama3" onclick="pushBoat(arrayboat1, 'gunner-class 1', 'circle 1', dpsa1, dpsa2, tanka1, tanka2, heala1)" value="2/2/1">
+    <input type="submit" id="btnteama1" onclick="pushBoat(arrayboat1, 'gunner-class 1', 'circle 1', dpsa1, dpsa2, dpsa3, tanka1, heala1, boat1)" value="3/1/1">
+    <input type="submit" id="btnteama2" onclick="pushBoat(arrayboat1, 'gunner-class 1', 'circle 1', dpsa1, dpsa2, tanka1, heala1, heala2, boat1)" value="2/1/2">
+    <input type="submit" id="btnteama3" onclick="pushBoat(arrayboat1, 'gunner-class 1', 'circle 1', dpsa1, dpsa2, tanka1, tanka2, heala1, boat2)" value="2/2/1">
     <input type="submit" id="btnattack" onclick="attackA()" value="A l'abordage">
     <input type="submit" id="btnattack" onclick="attackB()" value="B l'abordage">
-    <input type="submit" id="btnteamb1" onclick="pushBoat(arrayboat2, 'gunner-class 2', 'circle 2', dpsb1, dpsb2, dpsb3, tankb1, healb1)" value="3/1/1">
-    <input type="submit" id="btnteamb2" onclick="pushBoat(arrayboat2, 'gunner-class 2', 'circle 2', dpsb1, dpsb2, tankb1, healb1, healb2)" value="2/1/2">
-    <input type="submit" id="btnteamb3" onclick="pushBoat(arrayboat2, 'gunner-class 2', 'circle 2', dpsb1, dpsb2, tankb1, tankb2, healb1)" value="2/2/1">
+    <input type="submit" id="btnteamb1" onclick="pushBoat(arrayboat2, 'gunner-class 2', 'circle 2', dpsb1, dpsb2, dpsb3, tankb1, healb1, boat2)" value="3/1/1">
+    <input type="submit" id="btnteamb2" onclick="pushBoat(arrayboat2, 'gunner-class 2', 'circle 2', dpsb1, dpsb2, tankb1, healb1, healb2, boat2)" value="2/1/2">
+    <input type="submit" id="btnteamb3" onclick="pushBoat(arrayboat2, 'gunner-class 2', 'circle 2', dpsb1, dpsb2, tankb1, tankb2, healb1, boat2)" value="2/2/1">
 </div>
 
+<button onclick="selectText()">selection</button>
 
 
 <script>
 
 
 
-
-
 // Function push pré-compo team
-function pushBoat(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) {
+function pushBoat(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8,arg9) {
     arg1 = [];
     arg1.push(arg4, arg5, arg6, arg7, arg8);
 
@@ -224,7 +268,6 @@ function pushBoat(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) {
     console.log(arg1);
 
 }
-
 
 
 
@@ -265,6 +308,25 @@ function attackB() {
     $("#boat1").empty();
     create(arrayboat1, 'gunner-class 1', 'circle 1', boat1)
 }
+
+
+function selectText() {
+    // const test = document.getElementsByClassName('circle 2')
+    // test[0].focus();
+    // test[0].select();
+    var b1 = arrayboat1;
+    var b2 = arrayboat2;
+   console.log((b1[0].Gunnerpv) - (b2[0].Gunnerdps));
+
+}
+
+// var elements = document.getElementsByClassName("example");
+
+//   for (var i = 0, len = elements.length; i < len; i++) {
+//     elements [i].addEventListener("click", function() {
+//         attack
+//     });
+//   }
 
 
 
