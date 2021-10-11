@@ -196,15 +196,19 @@ background-position: center;
 
 #select_container {
     position: absolute;
-    display: flex;
+    display: -ms-inline-grid;
     text-align: center;
-    margin-top: 3%;
-
+    margin-left: 50%;
+    margin-top: 5%;
 }
 
 #select_boat1 {
-    margin-left: 150%;
-    margin-right: 50%;
+    margin-top: 30%;
+    margin-left: -20%;
+}
+#select_boat2 {
+    margin-top: 30%;
+    margin-left: 20%;
 }
 
 
