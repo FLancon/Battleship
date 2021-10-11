@@ -37,8 +37,21 @@ background-position: center;
     font-size: 2rem;
 }
 
+
+.info-gunner {
+    display:inline-block;
+    width:30vh;
+    height:12vh;
+    background-color:#b5fcf0;
+    border-top-left-radius: 40%;
+    border-bottom-left-radius: 40%;
+    border-bottom-right-radius: 10%;
+    border-top-right-radius: 10%;
+    /* border-radius: 40%, 10%, 10%, 40%; */
+}
+
+
 .circle {
-    margin-left: auto;
     margin-right: auto;
     box-sizing: border-box;
     width: 12vh;
@@ -48,17 +61,46 @@ background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    z-index: 10;
 }
 
-.info {
-    
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
-    width: 15vh;
-    height: 12vh;
-    border-radius: 50%;
-    border: 10px solid #5cddc7;
+.pv-gunner {
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 45%;
+    margin-top: -28%;
+    width: 25vh;
+}
+
+.pv-gunner span {
+    margin-left: -60%;
+}
+
+.dps-gunner {
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 45%;
+    width:25vh;
+}
+.dps-gunner span {
+    margin-left: -60%;
+}
+
+.separator {
+    height: 5vh;
+    width: 2px;
+    margin-left: 70%;
+    margin-top: -15%;
+    background-color: black;
+}
+
+.attack {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 52px;
+    height: 100px;
+    margin-left: 75%;
+    margin-top: -15%;
 }
 
 
