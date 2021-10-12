@@ -226,15 +226,19 @@ background-position: center;
 #boatplayer1 {
     width: 200px;
     height: 200px;
-    /* background-color: blue; */
-    background: url("/assets/img/skin-1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: scaleX(-1);
     animation: apparition1 2.5s ease-out;
+
+
 
 }
 #boatplayer2 {
     width: 200px;
     height: 200px;
-    background-color: red;
+    background-size: contain;
+    background-repeat: no-repeat;
     animation: apparition2 2.5s ease-out;
 
 }
@@ -242,10 +246,12 @@ background-position: center;
 
 @keyframes apparition1 {
     from{
-        transform: translate(-500px, 0px);
+
+        transform: translate(-500px, 0px) scaleX(-1);
     }
     to{
-        transform: translate(0);
+        transform: translate(0) scaleX(-1);
+
     }
 }
 
