@@ -20,7 +20,7 @@ background-position: center;
 
 
 .boat-1 {
-    display: inline-grid;
+    display: none;
     text-align: center;
     margin-top: 3%;
     margin-left: 3%;
@@ -28,7 +28,7 @@ background-position: center;
 }
 
 .boat-2 {
-    display: inline-grid;
+    display: none;
     text-align: center;
     margin-top: 3%;
     margin-right: 3%;
@@ -42,11 +42,8 @@ background-position: center;
     display:inline-block;
     width:30vh;
     height:12vh;
-    background-color:#b5fcf0;
-    border-top-left-radius: 40%;
-    border-bottom-left-radius: 40%;
-    border-bottom-right-radius: 10%;
-    border-top-right-radius: 10%;
+    background-color:#b5fcf080;
+    border-radius: 50vw;
     /* border-radius: 40%, 10%, 10%, 40%; */
 }
 
@@ -201,6 +198,7 @@ background-position: center;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align:center;
+    justify-content: space-between;
    }
 
 /* #select_boat1 {
@@ -219,27 +217,33 @@ background-position: center;
 
 .containerboats {
     display: flex;
-    justify-content: space-evenly;
-    margin-top: -39vh;
+    justify-content: center;
+    margin-top: -50vh;
 }
 
 #boatplayer1 {
-    width: 200px;
-    height: 200px;
+    display: none;
+    width: 300px;
+    height: 300px;background-image: url('./assets/img/skin-1.png');
     background-size: contain;
     background-repeat: no-repeat;
     transform: scaleX(-1);
     animation: apparition1 2.5s ease-out;
+    z-index: -9999;
 
 
 
 }
+
 #boatplayer2 {
-    width: 200px;
-    height: 200px;
+    display: none;
+    width: 300px;
+    height: 300px;
+    background-image: url('./assets/img/skin-3.png');
     background-size: contain;
     background-repeat: no-repeat;
     animation: apparition2 2.5s ease-out;
+    z-index: -9999;
 
 }
 
@@ -263,3 +267,26 @@ background-position: center;
         transform: translate(0);
     }
 }  
+#button-compo {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 300px;
+    justify-content: space-between;
+}
+
+#button-p1{
+    display:none;
+}
+
+#button-p2{
+    display:none;
+}
+
+
+.button-attack{
+    display:none;
+}
