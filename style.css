@@ -196,22 +196,64 @@ background-position: center;
 
 #select_container {
     position: absolute;
-    display: -ms-inline-grid;
-    text-align: center;
-    margin-left: 50%;
-    margin-top: 5%;
-}
+    display:flex;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align:center;
+   }
 
-#select_boat1 {
+/* #select_boat1 {
     margin-top: 30%;
     margin-left: -20%;
 }
 #select_boat2 {
     margin-top: 30%;
     margin-left: 20%;
-}
+} */
 
 
 .button {
     text-align: center;
 }
+
+.containerboats {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: -39vh;
+}
+
+#boatplayer1 {
+    width: 200px;
+    height: 200px;
+    /* background-color: blue; */
+    background: url("/assets/img/skin-1.png");
+    animation: apparition1 2.5s ease-out;
+
+}
+#boatplayer2 {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    animation: apparition2 2.5s ease-out;
+
+}
+
+
+@keyframes apparition1 {
+    from{
+        transform: translate(-500px, 0px);
+    }
+    to{
+        transform: translate(0);
+    }
+}
+
+@keyframes apparition2 {
+    from{
+        transform: translate(+500px, 0px);
+    }
+    to{
+        transform: translate(0);
+    }
+}  

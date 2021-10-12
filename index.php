@@ -14,8 +14,6 @@
     if(isset($_POST['submit_creation'])){
         $newboat = new Boat($_POST['NAME'], 0);
         $capitaine->createBoat($newboat);
-        $arraybateau = (array)$newboat;
-        // header("Location: index.php");
     }
     
 
@@ -34,7 +32,16 @@
             $newheal = new Gunner(Gunner::CLASS_HEAL, $healCap[0]["PV"], $healCap[0]["DPS"], $healCap[0]["HEAL"], $healCap[0]["IMG"]);
             $arrayheal = (array)$newheal;
 
+
+
+    // Création objet bateau
+
+    // Creation d'un objet player1
+    
+
+    // Creation d'un objet player2
 ?>
+
 
 
 
@@ -48,7 +55,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script src="script.js" defer></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Battleship</title>
 </head>
 <body>
@@ -75,18 +82,25 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 
         <h2> <?php echo "Équipe N°1"?></h2>
 
-        <div class="dropdown1">
-        <button onclick="myFunction1()" class="dropbtn1">Boat List</button>
-            <div id="myDropdown1" class="dropdown-content1">
-                <?php
-                    for($i=0; $i < $countboat; $i++){ ?>
-                    <a href="#<?php echo $exec_data_boat[$i]['NAME'] ?>"><?php echo $exec_data_boat[$i]['NAME'] ?></a>
-                    <?php  } ?>
-            </div>
+        <div class="boat1">
+        
+            <?php
+                for($i=0; $i < $countboat; $i++){ ?>
+                    <div>
+                        <input type="checkbox" class="boxes1" name="interest" value="<?php echo $exec_data_boat[$i]['NAME'] ?>">
+                        <label id="boatName" for="coding"><?php echo $exec_data_boat[$i]['NAME'] ?></label>
+                        <label for="coding"> - </label>
+                        <label id="boatXp" for="coding"><?php echo $exec_data_boat[$i]['XP'] ?></label>
+                    </div>
+            <?php } ?>
+        
             <form action="" method="POST">
                 <input type="txt" name="NAME" placeholder="New Boat">
                 <input type="submit" name="submit_creation" value="Créer">
             </form>
+            <button id="submit1" onclick="selectboat1(); return false;">Get Value</button>
+
+
         </div>
     </div>
 
@@ -94,18 +108,27 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 
          <h2><?php echo "Équipe N°2"?></h2>
 
-        <div class="dropdown2">
-        <button onclick="myFunction2()" class="dropbtn2">Boat List</button>
-            <div id="myDropdown2" class="dropdown-content2">
+         <div class="boat2">
+        
                 <?php
                     for($i=0; $i < $countboat; $i++){ ?>
-                    <a href="#<?php echo $exec_data_boat[$i]['NAME'] ?>"><?php echo $exec_data_boat[$i]['NAME'] ?></a>
-                    <?php  } ?>
+                        <div>
+                            <input type="checkbox" class="boxes2" name="interest2" value="<?php echo $exec_data_boat[$i]['NAME'] ?>">
+                            <label id="boatName" for="coding" ><?php echo $exec_data_boat[$i]['NAME'] ?></label>
+                            <label for="coding"> - </label>
+                            <label id="boatXp" for="coding" value="<?php echo $exec_data_boat[$i]['XP'] ?>"><?php echo $exec_data_boat[$i]['XP'] ?></label>
+                        </div>
+                <?php } ?>
+            
+                <form action="" method="POST">
+                    <input type="txt" name="NAME" placeholder="New Boat">
+                    <input type="submit" name="submit_creation" value="Créer">
+                </form>
+
+                <div>
+                    <button id="submit2" onclick="selectboat2(); return false;">Get Value</button>
+                </div>
             </div>
-            <form action="" method="POST">
-                <input type="text" name="NAME" placeholder="New Boat">
-                <input type="submit" name="submit_creation" value="Créer">
-            </form>
         </div>
     </div>
 </div>
@@ -136,9 +159,8 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
         var healb2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arrayheal)) ?>');
 
 
-        var objboat1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraybateau)) ?>');
 
-        console.log(objb);
+        // console.log(objboat1);
 
 
         // Création Array BOAT 1 & 2
@@ -215,10 +237,11 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
         }
         
         // appel fonction de creation graphique de Boat1
-        create(arrayboat1, 'gunner-class 1', 'circle 1', boat1)
-
-
+        // create(arrayboat1, 'gunner-class 1', 'circle 1', boat1)
         
+
+            
+    
     </script>
         
     </div>
@@ -227,7 +250,7 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
     
     <script>
         // appel fonction de creation graphique de Boat2
-        create(arrayboat2, 'gunner-class 2', 'circle 2', boat2)
+        // create(arrayboat2, 'gunner-class 2', 'circle 2', boat2)
     </script>
 
 
@@ -239,17 +262,16 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 
 
 <div class="button">
-    <input type="submit" id="btnteama1" onclick="pushBoat(arrayboat1, 'gunner-class 1', 'circle 1', dpsa1, dpsa2, dpsa3, tanka1, heala1, boat1)" value="3/1/1">
+    <!-- <input type="submit" id="btnteama1" onclick="pushBoat(arrayboat1, 'gunner-class 1', 'circle 1', dpsa1, dpsa2, dpsa3, tanka1, heala1, boat1)" value="3/1/1">
     <input type="submit" id="btnteama2" onclick="pushBoat(arrayboat1, 'gunner-class 1', 'circle 1', dpsa1, dpsa2, tanka1, heala1, heala2, boat1)" value="2/1/2">
-    <input type="submit" id="btnteama3" onclick="pushBoat(arrayboat1, 'gunner-class 1', 'circle 1', dpsa1, dpsa2, tanka1, tanka2, heala1, boat2)" value="2/2/1">
-    <input type="submit" id="btnattack" onclick="attackA()" value="A l'abordage">
-    <input type="submit" id="btnattack" onclick="attackB()" value="B l'abordage">
-    <input type="submit" id="btnteamb1" onclick="pushBoat(arrayboat2, 'gunner-class 2', 'circle 2', dpsb1, dpsb2, dpsb3, tankb1, healb1, boat2)" value="3/1/1">
+    <input type="submit" id="btnteama3" onclick="pushBoat(arrayboat1, 'gunner-class 1', 'circle 1', dpsa1, dpsa2, tanka1, tanka2, heala1, boat2)" value="2/2/1"> -->
+    <!-- <input type="submit" id="btnattack" onclick="attackA()" value="A l'abordage">
+    <input type="submit" id="btnattack" onclick="attackB()" value="B l'abordage"> -->
+    <!-- <input type="submit" id="btnteamb1" onclick="pushBoat(arrayboat2, 'gunner-class 2', 'circle 2', dpsb1, dpsb2, dpsb3, tankb1, healb1, boat2)" value="3/1/1">
     <input type="submit" id="btnteamb2" onclick="pushBoat(arrayboat2, 'gunner-class 2', 'circle 2', dpsb1, dpsb2, tankb1, healb1, healb2, boat2)" value="2/1/2">
-    <input type="submit" id="btnteamb3" onclick="pushBoat(arrayboat2, 'gunner-class 2', 'circle 2', dpsb1, dpsb2, tankb1, tankb2, healb1, boat2)" value="2/2/1">
+    <input type="submit" id="btnteamb3" onclick="pushBoat(arrayboat2, 'gunner-class 2', 'circle 2', dpsb1, dpsb2, tankb1, tankb2, healb1, boat2)" value="2/2/1"> -->
 </div>
 
-<button onclick="selectText()">selection</button>
 
 
 <script>
@@ -328,16 +350,48 @@ function attackB() {
   create(arrayboat1, 'gunner-class 1', 'circle 1', boat1)
 }
 
+function selectboat1() {
 
-function selectText() {
-    // const test = document.getElementsByClassName('circle 2')
-    // test[0].focus();
-    // test[0].select();
-    var b1 = arrayboat1;
-    var b2 = arrayboat2;
-   console.log((b1[0].Gunnerpv) - (b2[0].Gunnerdps));
+    var checks = document.getElementsByClassName('boxes1');
+    var str1 = '';
+
+    for (i=0; i<checks.length; i++) {
+
+        if (checks[i].checked === true) {
+            str1 += checks[i].value + " ";
+            document.getElementById('select_boat1').style.display = 'none';
+
+        }
+    }
 
 }
+
+function selectboat2() {
+
+    var checks = document.getElementsByClassName('boxes2');
+    var str2 = '';
+
+    for (i=0; i<checks.length; i++) {
+
+        if (checks[i].checked === true) {
+            str2 += checks[i].value + " ";
+            document.getElementById('select_boat2').style.display = 'none';
+        }
+    }
+
+
+}
+
+
+// function selectText() {
+//     // const test = document.getElementsByClassName('circle 2')
+//     // test[0].focus();
+//     // test[0].select();
+//     var b1 = arrayboat1;
+//     var b2 = arrayboat2;
+//    console.log((b1[0].Gunnerpv) - (b2[0].Gunnerdps));
+
+// }
 
 // var elements = document.getElementsByClassName("example");
 
@@ -390,5 +444,9 @@ function selectText() {
 //     });
 
 </script>
+    <div class="containerboats">
+        <div id="boatplayer1"></div>
+        <div id="boatplayer2"></div>
+    </div>
 </body>
 </html>

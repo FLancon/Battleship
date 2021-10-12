@@ -27,10 +27,13 @@ class Capitaine {
         $sql->execute();
     }
 
-    // TEST DE FONCTION POUR SELECTIONNER UN BATEAU A PARTIR DE LA TABLE BOAT
-    // public function selectBoat(Boat $boat) {
-    //     var_dump($boat);
 
+
+
+
+
+    // TEST DE FONCTION POUR SELECTIONNER UN BATEAU A PARTIR DE LA TABLE BOAT
+    // public function queryBoat(Boat $boat) {
     //     $sql = $this->conn->query('SELECT * FROM BOAT');
     //     $sql->execute();
     //     return $sql->fetchAll();
