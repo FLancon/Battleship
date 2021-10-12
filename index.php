@@ -445,8 +445,8 @@ function selectboat2() {
 
 </script>
     <div class="containerboats">
-        <div id="boatplayer1"></div>
-        <div id="boatplayer2"></div>
+        <div id="boatplayer1" style="background-image: url('./assets/img/skin-1.png');"></div>
+        <div id="boatplayer2" style="background-image: url('./assets/img/skin-3.png');"></div>
     </div>
 </body>
 </html>
