@@ -290,3 +290,13 @@ background-position: center;
 .button-attack{
     display:none;
 }
+
+
+ #skull {
+     width: 5%;
+     opacity: 0.1;
+     position: absolute;
+     bottom: 2%;
+     left: 2%;
+
+ }

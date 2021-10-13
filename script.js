@@ -27,4 +27,15 @@ function validateForm() {
         }
     }
 
+// Lancement audio au click
+function play() {
+    var audio = document.getElementById("audio");
+    if (audio.paused) {
+        audio.play();
+    } 
+    else {
+        audio.pause();
+    }
+        
     
+}
