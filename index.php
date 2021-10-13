@@ -296,6 +296,7 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 
 
 
+
 <script>
 
 
@@ -491,5 +492,9 @@ function displaybtn2() {
         <div id="boatplayer1"></div>
         <div id="boatplayer2"></div>
     </div>
+
+    <!-- Image audio -->
+    <audio id="audio" src="assets/audio/les_gentils_pirates.mp3"></audio>
+    <img id="skull" src="assets/img/skull.png" onclick="play()" alt="">
 </body>
 </html>
