@@ -99,6 +99,7 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
                 <input type="txt" name="NAME" placeholder="New Boat">
                 <input type="submit" name="submit_creation" value="Créer">
             </form>
+            
             <button id="submit1" onclick="selectboat1(); return false;">Ready!</button>
 
 
@@ -152,7 +153,6 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
         
     </div>
 </div>
-</div>
 
 
 <div class="container" id="container">
@@ -162,7 +162,7 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
     <h2 id="Boat-Title-1"></h2>
     
     <script>
-
+        
         //Recup array boat 1 et transformation en obj JS
         var dpsa1=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
         var dpsa2=$.parseJSON('<?php echo str_replace('\\u0000', '', json_encode($arraydps)) ?>');
@@ -185,10 +185,73 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 
         // console.log(objboat1);
 
+    // TEST FUNCTION ATTACK ALL
 
-        // Création Array BOAT 1 & 2
-        var arrayboat1 = [dpsa1, dpsa2, dpsa3, tanka1, heala1];
-        var arrayboat2 = [dpsb1, dpsb2, dpsb3, tankb1, healb1];
+    // function def(arg1) {
+    //     if (arg1.classList != ('clicked-attack')) {
+    //         arg1.classList.toggle('click-defend')
+    //     }
+    // }
+
+    function attack() {
+
+        let attaquant = document.getElementsByClassName('icon-attack');
+        let defbis = document.getElementsByClassName('circle');
+
+        for (i = 0; i < attaquant.length; i++) {
+            attaquant[i].addEventListener('click', function(event) {
+                this.classList.toggle('clicked-attack');
+            });
+            defbis[i].addEventListener('click', function(event) {
+                this.classList.toggle('clicked-defend');
+            })
+            // if (i.classList != ('clicked-attack')) {
+            // i.classList.toggle('click-defend')
+            // }
+            // def(attaquant[i]);
+
+            // arrayboat2[i].Gunnerpv = (arrayboat2[i].Gunnerpv - arrayboat2[i].Gunnerdps);
+    
+        }
+        
+
+    }   
+
+    // function clickedatq(arg1) {
+    //     arg1.addEventListener('click', function(event) {
+    //         this.classList.toggle('clicked-attack');
+    //     });
+    // }
+    
+    // function clickeddef(arg1) {
+    //     arg1.addEventListener('click', function(event) {
+    //         this.classList.toggle('clicked-defend');
+    //     });
+    // }
+
+
+    // function attack() { 
+
+    //     for (i = 0; i < arrayboat1.length; i++) {
+    //         clickeddef(arrayboat1[i]);
+    //     };
+            
+        
+    //     for (i = 0; i < arrayboat2.length; i++) {
+    //         clickeddef(arrayboat2[i]);
+    //     }
+        
+
+    // }   
+
+
+
+    
+    // Création Array BOAT 1 & 2
+    var arrayboat1 = [dpsa1, dpsa2, dpsa3, tanka1, heala1];
+    var arrayboat2 = [dpsb1, dpsb2, dpsb3, tankb1, healb1];
+
+        
 
 
         //TEST Creation graphique des Avatars Gunners + INFO GUNNER
@@ -209,6 +272,8 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
                 newDiv2.className = arg3;
                 newDiv2.id = arg3+i+'';
                 newDiv2.style = 'background-image: url(' + arg1[i].Gunnerimg + ');'
+                // newDiv2.value = arg1[i].Gunnerpv;
+                // console.log(newDiv2.value);
 
                 //DIV PV-GUNNER 
                 var newDiv3 = document.createElement("div");
@@ -236,7 +301,8 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 
                  //DIV ATTACK
                  var newDiv6 = document.createElement("div");
-                newDiv6.className = "attack";
+                newDiv6.className = "icon-attack";
+                newDiv6.onclick = attack();
                 newDiv6.style = 'background-image: url("./assets/img/slash.png");'
                 // newDiv6.onclick = attack(i);
 
@@ -287,10 +353,10 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-<div class="button-attack">
+<!-- <div class="button-attack">
     <input type="submit" id="btnattack" onclick="attackA()" value="A l'abordage">
     <input type="submit" id="btnattack" onclick="attackB()" value="B l'abordage">
-</div>
+</div> -->
 
 
 
@@ -336,12 +402,14 @@ function pushBoat(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8,arg9) {
 
 
 
+
+
 // Pattern Attack BOAT 1
 function attackA() {
   for (let i in arrayboat2) {
       arrayboat2[i].Gunnerpv = (arrayboat2[i].Gunnerpv - arrayboat1[i].Gunnerdps);
 
-      if (arrayboat2[i].Gunnerpv < 0) {
+      if (arrayboat2[i].Gunnerpv < 1) {
           arrayboat2.splice([i],1);
       }
   }
@@ -364,7 +432,7 @@ function attackB() {
       // console.table(arrayboat1);
           arrayboat1[i].Gunnerpv = (Number(arrayboat1[i].Gunnerpv) - Number(arrayboat2[i].Gunnerdps));
 
-      if (arrayboat1[i].Gunnerpv < 0) {
+      if (arrayboat1[i].Gunnerpv < 1) {
           arrayboat1.splice([i],1);
       }
   }
@@ -426,66 +494,6 @@ function displaybtn1() {
 function displaybtn2() {
     document.getElementById('button-p2').style.display = 'none'
 }
-
-// function selectText() {
-//     // const test = document.getElementsByClassName('circle 2')
-//     // test[0].focus();
-//     // test[0].select();
-//     var b1 = arrayboat1;
-//     var b2 = arrayboat2;
-//    console.log((b1[0].Gunnerpv) - (b2[0].Gunnerdps));
-
-// }
-
-// var elements = document.getElementsByClassName("example");
-
-//   for (var i = 0, len = elements.length; i < len; i++) {
-//     elements [i].addEventListener("click", function() {
-//         attack
-//     });
-//   }
-
-
-
-
-    // fetch("index.php")
-    // .then((arraydpsa1) => arraydpsa1.json())
-    // .then((data) => {
-    //   console.log(data);
-    // });
-
-
-
-// fetch("index.php").then(async response => {
-//       try {
-//        const data = await response.json()
-//        console.log('response data?', data)
-//      } catch(error) {
-//        console.log('Error happened here!' + error)
-//        console.error(error)
-//      }
-//     })
-
-//     fetch("index.php", {
-//   method: "GET",
-//   headers: {
-//     "Content-Type": "application/json"
-//   }
-// }).then(response => response.json())
-
-//     faireQqc()
-// .then(result => faireAutreChose(result))
-// .then(newResult => faireUnTroisiemeTruc(newResult))
-// .then(finalResult => {
-//   console.log('Résultat final : ' + finalResult);
-// })
-// .catch(failureCallback);
-
-// fetch("index.php")
-//     .then(res => res.json())
-//     .then(data => {
-//         console.log(data);
-//     });
 
 </script>
     <div class="containerboats">
