@@ -38,7 +38,6 @@
     // Création objet bateau
 
     // Creation d'un objet player1
-    
 
     // Creation d'un objet player2
 ?>
@@ -193,57 +192,69 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
     //     }
     // }
 
-    function attack() {
+// function attack() {
 
-        let attaquant = document.getElementsByClassName('icon-attack');
-        let defbis = document.getElementsByClassName('circle');
+//         let attaquant = document.getElementsByClassName('icon-attack');
+//         let defenseur = document.getElementsByClassName('circle');
+//         // let testatq = document.getElementsByClassName('icon-attack clicked-attack');
+//         // let testdef = document.getElementsByClassName('circle 1 clicked-defend');
+//         // let valuetest = testdef.value;
 
-        for (i = 0; i < attaquant.length; i++) {
-            attaquant[i].addEventListener('click', function(event) {
-                this.classList.toggle('clicked-attack');
-            });
-            defbis[i].addEventListener('click', function(event) {
-                this.classList.toggle('clicked-defend');
-            })
-            // if (i.classList != ('clicked-attack')) {
-            // i.classList.toggle('click-defend')
-            // }
-            // def(attaquant[i]);
 
-            // arrayboat2[i].Gunnerpv = (arrayboat2[i].Gunnerpv - arrayboat2[i].Gunnerdps);
-    
-        }
+//     for (i = 0; i < attaquant.length; i++) {
+//             attaquant[i].addEventListener('click', function(event) {
+//                 this.classList.toggle('clicked-attack');
+                
+//             });
+//             defenseur[i].addEventListener('click', function(event) {
+//                 this.classList.toggle('clicked-defend');
+
+//             })
+            // attaquant[i] = arrayboat1[i];
+
+
+            // let valuedef = newDiv2.value.Gunnerpv
+            // console.log(valuedef);
+        // console.log(attaquant[i].Gunnerdps);
         
+        // if (i.classList != ('clicked-attack')) {
+        // i.classList.toggle('click-defend')
+        // }
+        // def(attaquant[i]);
 
-    }   
+        // arrayboat2[i].Gunnerpv = (arrayboat2[i].Gunnerpv - arrayboat2[i].Gunnerdps);
 
-    // function clickedatq(arg1) {
-    //     arg1.addEventListener('click', function(event) {
-    //         this.classList.toggle('clicked-attack');
-    //     });
-    // }
-    
-    // function clickeddef(arg1) {
-    //     arg1.addEventListener('click', function(event) {
-    //         this.classList.toggle('clicked-defend');
-    //     });
-    // }
+    }
 
 
-    // function attack() { 
+}   
 
-    //     for (i = 0; i < arrayboat1.length; i++) {
-    //         clickeddef(arrayboat1[i]);
-    //     };
-            
-        
-    //     for (i = 0; i < arrayboat2.length; i++) {
-    //         clickeddef(arrayboat2[i]);
-    //     }
-        
+// function clickedatq(arg1) {
+//     arg1.addEventListener('click', function(event) {
+//         this.classList.toggle('clicked-attack');
+//     });
+// }
 
-    // }   
+// function clickeddef(arg1) {
+//     arg1.addEventListener('click', function(event) {
+//         this.classList.toggle('clicked-defend');
+//     });
+// }
 
+
+// function attack() { 
+
+//     for (i = 0; i < arrayboat1.length; i++) {
+//         clickedatq(arrayboat1[i]);
+//     };
+
+
+//     for (i = 0; i < arrayboat2.length; i++) {
+//         clickeddef(arrayboat2[i]);
+//     }
+
+
+// }   
 
 
     
@@ -272,7 +283,7 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
                 newDiv2.className = arg3;
                 newDiv2.id = arg3+i+'';
                 newDiv2.style = 'background-image: url(' + arg1[i].Gunnerimg + ');'
-                // newDiv2.value = arg1[i].Gunnerpv;
+                newDiv2.value = arg1[i];
                 // console.log(newDiv2.value);
 
                 //DIV PV-GUNNER 
@@ -302,9 +313,9 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
                  //DIV ATTACK
                  var newDiv6 = document.createElement("div");
                 newDiv6.className = "icon-attack";
+                newDiv6.value = i;
                 newDiv6.onclick = attack();
                 newDiv6.style = 'background-image: url("./assets/img/slash.png");'
-                // newDiv6.onclick = attack(i);
 
 
                 arg4.appendChild(newH2);
@@ -329,7 +340,7 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
         create(arrayboat1, 'gunner-class 1', 'circle 1', boat1)
         
 
-            
+
     
     </script>
         
@@ -367,6 +378,7 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 
 
 
+
 // Function push pré-compo team
 function pushBoat(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8,arg9) {
     arg1 = [];
@@ -401,45 +413,58 @@ function pushBoat(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8,arg9) {
 }
 
 
+// let attaquant = document.getElementsByClassName('icon-attack');
+//         let defenseur = document.getElementsByClassName('circle');
+//         let testatq = document.getElementsByClassName('icon-attack clicked-attack');
+//         let testdef = document.getElementsByClassName('circle 1 clicked-defend');
+//         let valuetest = testdef.value;
+
+
+//     for (i = 0; i < attaquant.length; i++) {
+//             attaquant[i].addEventListener('click', function(event) {
+//                 this.classList.toggle('clicked-attack');
+                
+//             });
 
 
 
-// Pattern Attack BOAT 1
-function attackA() {
-  for (let i in arrayboat2) {
-      arrayboat2[i].Gunnerpv = (arrayboat2[i].Gunnerpv - arrayboat1[i].Gunnerdps);
 
-      if (arrayboat2[i].Gunnerpv < 1) {
-          arrayboat2.splice([i],1);
-      }
-  }
+// function attackA() {
 
-  // Vide le Boat pour le remplir des gunners encore en vie
-  $("#boat2").empty();
+//   for (let i in arrayboat2) {
+//       arrayboat2[i].Gunnerpv = (arrayboat2[i].Gunnerpv - arrayboat1[i].Gunnerdps);
 
-  create(arrayboat2, 'gunner-class 2', 'circle 2', boat2)
+//       if (arrayboat2[i].Gunnerpv < 1) {
+//           arrayboat2.splice([i],1);
+//       }
+//   }
 
-}
+//   // Vide le Boat pour le remplir des gunners encore en vie
+//   $("#boat2").empty();
+
+//   create(arrayboat2, 'gunner-class 2', 'circle 2', boat2)
+
+// }
 
 
-// Pattern Attack BOAT 2
-function attackB() {
+// // Pattern Attack BOAT 2
+// function attackB() {
  
-  for (let i in arrayboat1) {
-      // console.log("attackB",Number(arrayboat2[i].Gunnerdps));
-      // console.log("nombre d'attaque",i);
-      // console.table(arrayboat2);
-      // console.table(arrayboat1);
-          arrayboat1[i].Gunnerpv = (Number(arrayboat1[i].Gunnerpv) - Number(arrayboat2[i].Gunnerdps));
+//   for (let i in arrayboat1) {
+//       // console.log("attackB",Number(arrayboat2[i].Gunnerdps));
+//       // console.log("nombre d'attaque",i);
+//       // console.table(arrayboat2);
+//       // console.table(arrayboat1);
+//           arrayboat1[i].Gunnerpv = (Number(arrayboat1[i].Gunnerpv) - Number(arrayboat2[i].Gunnerdps));
 
-      if (arrayboat1[i].Gunnerpv < 1) {
-          arrayboat1.splice([i],1);
-      }
-  }
+//       if (arrayboat1[i].Gunnerpv < 1) {
+//           arrayboat1.splice([i],1);
+//       }
+//   }
 
-  $("#boat1").empty();
-  create(arrayboat1, 'gunner-class 1', 'circle 1', boat1)
-}
+//   $("#boat1").empty();
+//   create(arrayboat1, 'gunner-class 1', 'circle 1', boat1)
+// }
 
 
 // Joueur 1 Selectionne son bateau et stock son nom dans la variable str1
