@@ -18,6 +18,7 @@
     }
     
 
+
     // Creation d'un objet DPS
             $dpsCap = $capitaine->createDps();
             $newdps = new Gunner(Gunner::CLASS_DPS, $dpsCap[0]["PV"], $dpsCap[0]["DPS"], $dpsCap[0]["HEAL"], $dpsCap[0]["IMG"]);
@@ -68,10 +69,20 @@ $data_boat = $conn->query('SELECT * FROM BOAT');
 $exec_data_boat = $data_boat->fetchAll(PDO::FETCH_ASSOC);
 
 
+// Fonction requete recompense
+if (isset($_GET['victoire'])) {
+    $winner = $_GET['victoire'];
+    $query = 'UPDATE BOAT SET XP = XP + 1 WHERE `NAME` = "'.$winner.'"';
+    $sql = $conn->prepare($query);
+    $sql -> execute();
+    // var_dump($sql);
+    // var_dump($query); die();
+    header('Location: index.php');
+}
+
 // Créer un tableau des infos de la table Gunner de la BDD:
 $data_gunner = $conn->query('SELECT * FROM GUNNER');
 $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
-
 
 ?>
 
@@ -95,7 +106,7 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
             <?php } ?>
         
             <form name="myForm" action="" method="POST" onsubmit="return validateForm()">
-                <input type="txt" name="NAME" placeholder="New Boat">
+                <input type="txt" name="NAME" placeholder="New Boat" pattern="[a-zA-Z0-9-]+">
                 <input type="submit" name="submit_creation" value="Créer">
             </form>
             
@@ -122,7 +133,7 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
                 <?php } ?>
             
                 <form name="myForm" action="" method="POST" onsubmit="return validateForm()">
-                    <input type="txt" name="NAME" placeholder="New Boat">
+                    <input type="txt" name="NAME" placeholder="New Boat" pattern="[a-zA-Z0-9-]+">
                     <input type="submit" name="submit_creation" value="Créer">
                 </form>
 
@@ -224,10 +235,10 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 
         // arrayboat2[i].Gunnerpv = (arrayboat2[i].Gunnerpv - arrayboat2[i].Gunnerdps);
 
-    }
+//     }
 
 
-}   
+// }   
 
 // function clickedatq(arg1) {
 //     arg1.addEventListener('click', function(event) {
@@ -262,12 +273,18 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
     var arrayboat1 = [dpsa1, dpsa2, dpsa3, tanka1, heala1];
     var arrayboat2 = [dpsb1, dpsb2, dpsb3, tankb1, healb1];
 
-        
-
 
         //TEST Creation graphique des Avatars Gunners + INFO GUNNER
         function create(arg1, arg2, arg3, arg4) {
+
+
+
             for (let i in arg1) {
+                
+                // Boat Name
+                var newH21 =document.createElement("h2"); 
+                newH21.id= "Boat-Title-1";
+
 
                 var newH2 = document.createElement("h2");
                 newH2.className = arg2 + i + '';
@@ -283,7 +300,7 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
                 newDiv2.className = arg3;
                 newDiv2.id = arg3+i+'';
                 newDiv2.style = 'background-image: url(' + arg1[i].Gunnerimg + ');'
-                newDiv2.value = arg1[i];
+                // newDiv2.value = arg1[i];
                 // console.log(newDiv2.value);
 
                 //DIV PV-GUNNER 
@@ -293,7 +310,7 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 
                 // SPAN PV
                 var newSpan1 = document.createElement("span");
-                newSpan1.className = "span-pv"+i;
+                newSpan1.className = arg2+'pv'+i;
                 let pv = document.createTextNode(arg1[i].Gunnerpv);
                 
                 //DIV DPS-GUNNER
@@ -303,7 +320,7 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 
                 // SPAN DPS
                 var newSpan2 = document.createElement("span");
-                newSpan2.className = "span-dps"+i;
+                newSpan2.className = arg2 + "dps" + i;
                 let dps = document.createTextNode(arg1[i].Gunnerdps);
 
                 //DIV SEPARATOR
@@ -313,11 +330,11 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
                  //DIV ATTACK
                  var newDiv6 = document.createElement("div");
                 newDiv6.className = "icon-attack";
-                newDiv6.value = i;
-                newDiv6.onclick = attack();
+                // newDiv6.value = i;
+                // newDiv6.onclick = attack();
                 newDiv6.style = 'background-image: url("./assets/img/slash.png");'
 
-
+                arg4.appendChild(newH21);
                 arg4.appendChild(newH2);
                 arg4.appendChild(newDiv1);
                 newDiv1.appendChild(newDiv2);
@@ -331,8 +348,8 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
                 newDiv1.appendChild(newDiv6);
                 
             }
-
-                console.log(arg1)
+            document.getElementById("Boat-Title-1").innerHTML = str1;
+            console.log(arg1)
 
         }
         
@@ -364,11 +381,10 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-<!-- <div class="button-attack">
-    <input type="submit" id="btnattack" onclick="attackA()" value="A l'abordage">
-    <input type="submit" id="btnattack" onclick="attackB()" value="B l'abordage">
-</div> -->
-
+<div class="button-attack">
+    <input type="submit" id="btnattacka" onclick="attackA()" value="A l'abordage">
+    <input type="submit" id="btnattackb" onclick="attackB()" value="B l'abordage">
+</div>
 
 
 
@@ -387,8 +403,8 @@ function pushBoat(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8,arg9) {
     for (let i in arg1) {
         let title = document.getElementsByClassName(arg2+i+'')
         let circle = document.getElementById(arg3+i+'');
-        let pv = document.getElementsByClassName('span-pv'+i);
-        let dps = document.getElementsByClassName('span-dps'+i);
+        let pv = document.getElementsByClassName(arg2+'pv'+i);
+        let dps = document.getElementsByClassName(arg2+'dps'+i);
 
             for(let data of title){
                 data.textContent = ''+arg1[i].Gunnerclass+'';
@@ -413,62 +429,55 @@ function pushBoat(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8,arg9) {
 }
 
 
-// let attaquant = document.getElementsByClassName('icon-attack');
-//         let defenseur = document.getElementsByClassName('circle');
-//         let testatq = document.getElementsByClassName('icon-attack clicked-attack');
-//         let testdef = document.getElementsByClassName('circle 1 clicked-defend');
-//         let valuetest = testdef.value;
+function attackA() {
+
+  for (let i in arrayboat2) {
+      arrayboat2[i].Gunnerpv = (arrayboat2[i].Gunnerpv - arrayboat1[i].Gunnerdps);
+
+      if (arrayboat2[i].Gunnerpv < 1) {
+          arrayboat2.splice([i],1);
+      }
+  }
+
+  // Vide le Boat pour le remplir des gunners encore en vie
+  $("#boat2").empty();
+
+  create(arrayboat2, 'gunner-class 2', 'circle 2', boat2);
+  
+  document.getElementById('btnattackb').style.display = 'block';
+  document.getElementById('btnattacka').style.display = 'none';
+
+  endGame();
+
+}
 
 
-//     for (i = 0; i < attaquant.length; i++) {
-//             attaquant[i].addEventListener('click', function(event) {
-//                 this.classList.toggle('clicked-attack');
-                
-//             });
-
-
-
-
-// function attackA() {
-
-//   for (let i in arrayboat2) {
-//       arrayboat2[i].Gunnerpv = (arrayboat2[i].Gunnerpv - arrayboat1[i].Gunnerdps);
-
-//       if (arrayboat2[i].Gunnerpv < 1) {
-//           arrayboat2.splice([i],1);
-//       }
-//   }
-
-//   // Vide le Boat pour le remplir des gunners encore en vie
-//   $("#boat2").empty();
-
-//   create(arrayboat2, 'gunner-class 2', 'circle 2', boat2)
-
-// }
-
-
-// // Pattern Attack BOAT 2
-// function attackB() {
+// Pattern Attack BOAT 2
+function attackB() {
  
-//   for (let i in arrayboat1) {
-//       // console.log("attackB",Number(arrayboat2[i].Gunnerdps));
-//       // console.log("nombre d'attaque",i);
-//       // console.table(arrayboat2);
-//       // console.table(arrayboat1);
-//           arrayboat1[i].Gunnerpv = (Number(arrayboat1[i].Gunnerpv) - Number(arrayboat2[i].Gunnerdps));
+  for (let i in arrayboat1) {
+          arrayboat1[i].Gunnerpv = (Number(arrayboat1[i].Gunnerpv) - Number(arrayboat2[i].Gunnerdps));
 
-//       if (arrayboat1[i].Gunnerpv < 1) {
-//           arrayboat1.splice([i],1);
-//       }
-//   }
+      if (arrayboat1[i].Gunnerpv < 1) {
+          arrayboat1.splice([i],1);
+      }
+  }
 
-//   $("#boat1").empty();
-//   create(arrayboat1, 'gunner-class 1', 'circle 1', boat1)
-// }
+  $("#boat1").empty();
+  create(arrayboat1, 'gunner-class 1', 'circle 1', boat1)
+  
+  
+  document.getElementById('btnattackb').style.display = 'none';
+  document.getElementById('btnattacka').style.display = 'block';
+
+
+  endGame();
+
+}
 
 
 // Joueur 1 Selectionne son bateau et stock son nom dans la variable str1
-var str1 = '';
+var str1 = 'Nom Bato 1';
 
 function selectboat1() {
     var checks = document.getElementsByClassName('boxes1');
@@ -483,14 +492,13 @@ function selectboat1() {
             document.getElementById('boat1').style.display = 'inline-grid';
             document.getElementById('button-p1').style.display = 'inline-grid';
             document.getElementById("Boat-Title-1").innerHTML = str1;
-        
         }
     }
 
 }
 
 // Joueur 1 Selectionne son bateau et stock son nom dans la variable str1
-var str2 = 'Nom de bateau du Joueur2';
+var str2 = 'Nom bato 2';
 
 function selectboat2() {
 
@@ -513,11 +521,28 @@ function selectboat2() {
 
 }
 function displaybtn1() {
-    document.getElementById('button-p1').style.display = 'none'
+    document.getElementById('button-p1').style.display = 'none';
 }
 
 function displaybtn2() {
-    document.getElementById('button-p2').style.display = 'none'
+    document.getElementById('button-p2').style.display = 'none';
+    document.getElementById('btnattacka').style.display = 'block';
+}
+
+
+function endGame() {
+    var popUp = document.getElementById('victoire');
+
+    if (arrayboat1.length == 0) {
+        popUp.innerHTML += `Victoire de ${str1}`
+        document.getElementById('popupVictory').style.display = 'block';
+    }
+
+    else if (arrayboat2.length == 0) {
+        popUp.innerHTML += `Victory of ${str2}`
+        document.getElementById('popupVictory').style.display = 'block';
+    }
+
 }
 
 </script>
@@ -526,8 +551,25 @@ function displaybtn2() {
         <div id="boatplayer2"></div>
     </div>
 
+<!-- Pop Up Victoire -->
+<div id="popupVictory">
+    <p id="victoire"></p>
+    <img  id="treasure" src="assets/img/treasure.png" alt="">
+    <input id="btnvictoire" type="submit" value="Récuperer le trésor">
+</div>
+
+
     <!-- Image audio -->
     <audio id="audio" src="assets/audio/les_gentils_pirates.mp3"></audio>
     <img id="skull" src="assets/img/skull.png" onclick="play()" alt="">
+
+
+<script>
+  document.getElementById("btnvictoire").onclick = function () {
+        location.href = `index.php?victoire=${str1}`;
+    };
+    </script>
+
+
 </body>
 </html>
