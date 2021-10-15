@@ -58,6 +58,7 @@
     <script src="script.js" defer></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');</style>
     <title>Battleship</title>
     <link rel="icon" href="assets/img/Parrot.png">
 </head>
