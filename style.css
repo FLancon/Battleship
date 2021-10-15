@@ -5,11 +5,12 @@
 }
 
 body {
-height: 100vh;
+height: 95vh;
 width: auto;
 background-image: url("./assets/img/battleship-background.jpg");
 background-size: cover;
 background-position: center;
+font-family: 'Rock Salt', cursive !important;
 }
 
 .container {
@@ -201,11 +202,10 @@ background-position: center;
     justify-content: space-between;
    }
 
-/* #select_boat1 {
-    margin-top: 30%;
-    margin-left: -20%;
+#select_boat1 {
+    margin-right: 11%;
 }
-#select_boat2 {
+/* #select_boat2 {
     margin-top: 30%;
     margin-left: 20%;
 } */
@@ -270,8 +270,8 @@ background-position: center;
 #button-compo {
     position: absolute;
     display: flex;
-    top: 50%;
-    left: 50%;
+    top: 45%;
+    left: 48%;
     transform: translate(-50%, -50%);
     text-align: center;
     width: 300px;
@@ -280,10 +280,16 @@ background-position: center;
 
 #button-p1{
     display:none;
+    margin-right: 10%;
 }
 
 #button-p2{
     display:none;
+}
+
+
+.button-attack{
+    margin-left: 45%;
 }
 
 
@@ -313,7 +319,7 @@ background-position: center;
     /* background-color: red; */
     text-align: center;
     position: absolute;
-    top:50%;
+    top: 20%;
     left:50%;
     transform: translate(-50%, -50%);
 

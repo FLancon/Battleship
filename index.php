@@ -57,7 +57,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script src="script.js" defer></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');</style>
     <title>Battleship</title>
+    <link rel="icon" href="assets/img/Parrot.png">
 </head>
 <body>
 
@@ -146,7 +148,7 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
 
     <div id="button-compo">
         <div id="button-p1">
-            <h2>Compo équipe N°1</h2>
+            <h2>Equipage Babord</h2>
             <input type="submit" id="btnteama1" onclick="pushBoat(arrayboat1, 'gunner-class 1', 'circle 1', dpsa1, dpsa2, dpsa3, tanka1, heala1, boat1)" value="3/1/1">
             <input type="submit" id="btnteama2" onclick="pushBoat(arrayboat1, 'gunner-class 1', 'circle 1', dpsa1, dpsa2, tanka1, heala1, heala2, boat1)" value="2/1/2">
             <input type="submit" id="btnteama3" onclick="pushBoat(arrayboat1, 'gunner-class 1', 'circle 1', dpsa1, dpsa2, tanka1, tanka2, heala1, boat2)" value="2/2/1">
@@ -155,7 +157,7 @@ $exec_data_gunner = $data_gunner->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <div id="button-p2">
-        <h2>Compo équipe N°2</h2>
+        <h2>Equipage Tribord</h2>
         <input type="submit" id="btnteamb1" onclick="pushBoat(arrayboat2, 'gunner-class 2', 'circle 2', dpsb1, dpsb2, dpsb3, tankb1, healb1, boat2)" value="3/1/1">
         <input type="submit" id="btnteamb2" onclick="pushBoat(arrayboat2, 'gunner-class 2', 'circle 2', dpsb1, dpsb2, tankb1, healb1, healb2, boat2)" value="2/1/2">
         <input type="submit" id="btnteamb3" onclick="pushBoat(arrayboat2, 'gunner-class 2', 'circle 2', dpsb1, dpsb2, tankb1, tankb2, healb1, boat2)" value="2/2/1">
